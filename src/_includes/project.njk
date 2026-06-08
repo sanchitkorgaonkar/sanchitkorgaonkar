@@ -1,0 +1,22 @@
+---
+layout: base.njk
+---
+
+<article>
+  <header class="article-header">
+    <div class="article-label">Project {% if status %}<span class="tag">{{ status }}</span>{% endif %}</div>
+    <h1 class="article-title">{{ title }}</h1>
+    <div class="article-meta">
+      {{ year if year }}
+      {% if stack %} &nbsp;·&nbsp; {{ stack }}{% endif %}
+    </div>
+  </header>
+
+  <div class="article-body">
+    {{ content | safe }}
+  </div>
+
+  <div class="article-back">
+    <a href="/projects/">← All projects</a>
+  </div>
+</article>

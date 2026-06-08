@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{ description or 'Sanchit Korgaonkar — Principal-level TPM, AI-Native Product Operations & Execution Intelligence.' }}">
+  <title>{% if title %}{{ title }} — {% endif %}Sanchit Korgaonkar</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>·</text></svg>">
+</head>
+<body>
+  <div class="site-wrapper">
+    <header>
+      <div class="nav-inner">
+        <a href="/" class="site-name">
+          <span class="site-name-full">Sanchit Korgaonkar</span>
+          <span class="site-name-sub">AI-Native Product Operations & Execution Intelligence</span>
+        </a>
+        <nav>
+          <a href="/essays/" {% if page.url.startsWith('/essays') %}class="active"{% endif %}>Essays</a>
+          <a href="/projects/" {% if page.url.startsWith('/projects') %}class="active"{% endif %}>Projects</a>
+          <a href="/artifacts/" {% if page.url.startsWith('/artifacts') %}class="active"{% endif %}>Artifacts</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      {{ content | safe }}
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <a href="https://linkedin.com/in/sanchitkorgaonkar" target="_blank" rel="noopener" class="footer-link">LinkedIn →</a>
+        <span class="footer-copy">Sanchit Korgaonkar · 2026</span>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+---
+layout: base.njk
+title: Essays
+description: Writing on AI, execution intelligence, and operating model design.
+---
+
+<div class="page-header">
+  <div class="page-title">Essays</div>
+  <div class="page-description">On AI, execution intelligence, and operating model design.</div>
+</div>
+
+{% if collections.essays.length > 0 %}
+<ul class="content-list">
+  {% for essay in collections.essays %}
+  <li class="content-item">
+    <a href="{{ essay.url }}">
+      <div class="item-meta">{{ essay.data.date | date("MMMM YYYY") if essay.data.date else essay.date | date("MMMM YYYY") }}</div>
+      <div class="item-title">{{ essay.data.title }}</div>
+      {% if essay.data.excerpt %}<div class="item-excerpt">{{ essay.data.excerpt }}</div>{% endif %}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<div class="empty-state">No essays yet.</div>
+{% endif %}

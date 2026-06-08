@@ -1,0 +1,22 @@
+---
+layout: base.njk
+---
+
+<article>
+  <header class="article-header">
+    <div class="article-label">Essay</div>
+    <h1 class="article-title">{{ title }}</h1>
+    <div class="article-meta">
+      {{ date | date("D MMMM YYYY") if date }}
+      {% if readtime %} &nbsp;·&nbsp; {{ readtime }} min read{% endif %}
+    </div>
+  </header>
+
+  <div class="article-body">
+    {{ content | safe }}
+  </div>
+
+  <div class="article-back">
+    <a href="/essays/">← All essays</a>
+  </div>
+</article>

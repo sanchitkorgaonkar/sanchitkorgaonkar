@@ -1,0 +1,26 @@
+---
+layout: base.njk
+title: Artifacts
+description: Frameworks, templates, and working prototypes.
+---
+
+<div class="page-header">
+  <div class="page-title">Artifacts</div>
+  <div class="page-description">Frameworks, templates, and working prototypes.</div>
+</div>
+
+{% if collections.artifacts.length > 0 %}
+<ul class="content-list">
+  {% for artifact in collections.artifacts %}
+  <li class="content-item">
+    <a href="{{ artifact.url }}">
+      <div class="item-meta">{{ artifact.data.year if artifact.data.year }}{% if artifact.data.type %} &nbsp;·&nbsp; {{ artifact.data.type }}{% endif %}</div>
+      <div class="item-title">{{ artifact.data.title }}</div>
+      {% if artifact.data.excerpt %}<div class="item-excerpt">{{ artifact.data.excerpt }}</div>{% endif %}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<div class="empty-state">Artifacts coming soon.</div>
+{% endif %}
