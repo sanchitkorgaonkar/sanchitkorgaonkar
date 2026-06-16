@@ -1,6 +1,6 @@
 ---
 layout: project.njk
-title: "One workflow for the thinking and the prototypes"
+title: "Single workflow for the thinking as well as the prototypes"
 year: 2026
 status: live
 stack: "Eleventy · Vercel · Claude Code"
@@ -24,3 +24,6 @@ More of those prototypes will show up here as I finish them.
 ### My GitHub contributions — just getting started
 
 <img src="/assets/github-contributions.png" alt="My GitHub contributions — just getting started" style="max-width: 480px; width: 100%;">
+
+Site Stack
+The stack is Eleventy for static generation, Vercel for hosting, markdown files for content. New entries take about two minutes to add when it's ready.
