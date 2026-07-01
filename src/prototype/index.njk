@@ -1,0 +1,26 @@
+---
+layout: base.njk
+title: Prototype
+description: Systems and tools built at the intersection of AI and execution intelligence.
+---
+
+<div class="page-header">
+  <div class="page-title">Prototype</div>
+  <div class="page-description">Systems and tools built at the intersection of AI and execution intelligence.</div>
+</div>
+
+{% if collections.prototype.length > 0 %}
+<ul class="content-list">
+  {% for item in collections.prototype %}
+  <li class="content-item">
+    <a href="{{ item.url }}">
+      <div class="item-meta">{{ item.data.year if item.data.year }}{% if item.data.status %} &nbsp;·&nbsp; <span class="tag">{{ item.data.status }}</span>{% endif %}</div>
+      <div class="item-title">{{ item.data.title }}</div>
+      {% if item.data.excerpt %}<div class="item-excerpt">{{ item.data.excerpt }}</div>{% endif %}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<div class="empty-state">Prototypes coming soon.</div>
+{% endif %}

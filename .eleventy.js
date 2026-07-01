@@ -20,12 +20,12 @@ module.exports = function(eleventyConfig) {
     return collectionApi.getFilteredByGlob("src/essays/*.md").reverse();
   });
 
-  eleventyConfig.addCollection("projects", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("src/projects/*.md").reverse();
+  eleventyConfig.addCollection("prototype", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/prototype/*.md").reverse();
   });
 
-  eleventyConfig.addCollection("artifacts", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("src/artifacts/*.md").reverse();
+  eleventyConfig.addCollection("notes", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/notes/*.md").reverse();
   });
 
   return {

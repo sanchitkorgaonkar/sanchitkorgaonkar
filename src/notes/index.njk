@@ -1,0 +1,26 @@
+---
+layout: base.njk
+title: Notes
+description: Frameworks, templates, and working prototypes.
+---
+
+<div class="page-header">
+  <div class="page-title">Notes</div>
+  <div class="page-description">Frameworks, templates, and working prototypes.</div>
+</div>
+
+{% if collections.notes.length > 0 %}
+<ul class="content-list">
+  {% for note in collections.notes %}
+  <li class="content-item">
+    <a href="{{ note.url }}">
+      <div class="item-meta">{{ note.data.year if note.data.year }}{% if note.data.type %} &nbsp;·&nbsp; {{ note.data.type }}{% endif %}</div>
+      <div class="item-title">{{ note.data.title }}</div>
+      {% if note.data.excerpt %}<div class="item-excerpt">{{ note.data.excerpt }}</div>{% endif %}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<div class="empty-state">Notes coming soon.</div>
+{% endif %}
