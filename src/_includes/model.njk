@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="{{ description or 'Sanchit Korgaonkar on AI-native operating models: workflow, org design, governance and the context layer underneath.' }}">
+  <title>{% if title and not isHome %}{{ name or title }} — {% endif %}Sanchit Korgaonkar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Literata:opsz,wght@7..72,400;7..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/css/model.css">
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+</head>
+<body>
+  <header class="m-top">
+    <div class="m-top-in">
+      <a class="m-brand" href="/"><b>Sanchit Korgaonkar</b><span>AI-native operating models</span></a>
+      <nav class="m-nav" aria-label="Site">
+        <a href="/" {% if isHome %}aria-current="page"{% endif %}>The model</a>
+        <a href="/essays/" {% if page.url.startsWith('/essays') %}aria-current="page"{% endif %}>Essays</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="m-wrap">
+    {{ content | safe }}
+
+    <section class="m-sec" id="contact">
+      <div class="m-contact">
+        <span class="m-eyebrow">Compare notes</span>
+        <p>If you're working through any of this in your organisation, I'd like to hear what you're seeing.</p>
+        <div class="m-row">
+          <code id="m-email">sanchit.korgaonkar@gmail.com</code>
+          <button class="m-btn" type="button" data-copy="#m-email">Copy email</button>
+          <a class="m-btn primary" href="https://linkedin.com/in/sanchitkorgaonkar" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <p class="m-foot">Sanchit Korgaonkar · 2026</p>
+    </section>
+  </main>
+
+  <script src="/js/model.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+{# One teaching interactive per layer. Behaviour lives in /js/model.js, keyed by data-interactive. #}
+{% if layer.interactive == "move-bottleneck" %}
+<section class="m-sec">
+  <h2>Move the bottleneck</h2>
+  <p class="m-small">Drag the slider to make building faster. Watch where the work waits.</p>
+  <div class="m-box" data-interactive="move-bottleneck">
+    <span class="m-illus">Illustrative model · a team of fixed size, one week</span>
+    <div class="m-sim-ctrl">
+      <label class="m-rng" for="speed">How much faster AI makes building <span class="m-val" data-out="speed">1×</span>
+        <input type="range" id="speed" min="1" max="6" step="0.5" value="1"></label>
+      <label class="m-switch" for="cluster"><input type="checkbox" id="cluster">Review related work together</label>
+    </div>
+    <div class="m-lanes" data-lanes></div>
+    <div class="m-sim-out">
+      <div><span>Where work waits</span><strong data-out="where"></strong></div>
+      <div><span>What that means</span><strong data-out="means"></strong></div>
+    </div>
+  </div>
+  <div class="m-legend"><span><i class="g-ai"></i>Capacity agents can multiply</span><span><i class="g-human"></i>Capacity that needs human judgment</span><span class="m-accent">┆ what actually ships</span></div>
+</section>
+{% elif layer.interactive == "count-handoffs" %}
+<section class="m-sec">
+  <h2>Count your hand-offs</h2>
+  <div class="m-box" data-interactive="count-handoffs">
+    <span class="m-small">Pick every group one AI feature passes through before a customer sees it.</span>
+    <div class="m-picks" data-picks></div>
+    <div class="m-chains">
+      <div class="m-chain"><span class="m-eyebrow">Organised by function</span><div class="m-chain-row" data-chain="a"></div><p class="m-chain-sum" data-sum="a"></p></div>
+      <div class="m-chain"><span class="m-eyebrow">Organised as a pod</span><div class="m-chain-row" data-chain="b"></div><p class="m-chain-sum" data-sum="b"></p></div>
+    </div>
+  </div>
+</section>
+{% elif layer.interactive == "own-the-draft" %}
+<section class="m-sec">
+  <h2>Try it: own the draft</h2>
+  <p class="m-small">Confirm or correct each line the agent drafted. The team summary unlocks when every line is owned.</p>
+  <div class="m-hc" data-interactive="own-the-draft">
+    <div class="m-hc-head">
+      <div><span class="m-illus">Illustrative example</span><h3>A pod's monthly health check</h3></div>
+      <div class="m-meter"><span data-out="count"></span><span class="m-meter-bar"><i data-out="bar"></i></span></div>
+    </div>
+    <div class="m-hc-body" data-hc-body></div>
+    <div class="m-hc-foot" data-hc-foot></div>
+  </div>
+  <div class="m-legend"><span><i class="g-ai"></i>Drafted by agent</span><span><i class="g-ok"></i>Confirmed by team</span><span><i class="g-warn"></i>Corrected by team</span></div>
+</section>
+{% elif layer.interactive == "same-thing" %}
+<section class="m-sec">
+  <h2>Same thing, different names</h2>
+  <p class="m-small">Fill in the right-hand column for one product area in your own organisation.</p>
+  <div class="m-naming" data-interactive="same-thing">
+    <table>
+      <thead><tr><th>Where it appears</th><th>What it's called there</th></tr></thead>
+      <tbody>
+        <tr><td>Customer feedback</td><td><input id="n1" aria-label="Name in customer feedback" placeholder="What the customer sees on screen"></td></tr>
+        <tr><td>Roadmap</td><td><input id="n2" aria-label="Name on the roadmap" placeholder="An internal codename"></td></tr>
+        <tr><td>Alerts and on-call</td><td><input id="n3" aria-label="Name in alerts" placeholder="A service category"></td></tr>
+        <tr><td>An agent reading all three</td><td class="m-q" data-out="names">three unrelated things</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endif %}

@@ -1,0 +1,73 @@
+---
+layout: model.njk
+pagination:
+  data: layers
+  size: 1
+  alias: layer
+permalink: "/{{ layer.slug }}/"
+eleventyComputed:
+  title: "{{ layer.title }}"
+  name: "{{ layer.name }}"
+  description: "{{ layer.description }}"
+---
+{%- set up = layers | neighbour(layer.key, -1) -%}
+{%- set down = layers | neighbour(layer.key, 1) -%}
+
+<section class="m-sec m-lhead-sec">
+  <nav class="m-where" aria-label="The four layers">
+    {% for l in layers %}<a href="/{{ l.slug }}/" {% if l.key == layer.key %}aria-current="page"{% endif %}><i class="g-{{ l.glyph }}"></i>{{ l.name }}</a>{% endfor %}
+  </nav>
+  <p class="m-said" data-said hidden>You said: <q>{{ layer.problem }}</q> Here's what I've learned about it.</p>
+  <div class="m-lhead">
+    <div class="m-lhead-txt">
+      <span class="m-eyebrow">{{ layer.name }} · {{ layer.sub }}</span>
+      <h1>{{ layer.title }}</h1>
+      <span class="m-status {{ layer.status.tone }}">{{ layer.status.label }}</span>
+      <p class="m-lede">{{ layer.lede }}</p>
+    </div>
+    {% set v = layer.video %}{% set size = "small" %}{% include "partials/video.njk" %}
+  </div>
+</section>
+
+{% include "partials/interactive.njk" %}
+
+<section class="m-sec">
+  <div class="m-field {% if not layer.field.num %}nonum{% endif %}">
+    <span class="m-eyebrow">From the field</span>
+    {% if layer.field.num %}<b>{{ layer.field.num }}</b>{% endif %}
+    <p>{{ layer.field.text }}</p>
+  </div>
+</section>
+
+<section class="m-sec">
+  <h2>What I learned building it</h2>
+  <div class="m-learned">
+    {% for item in layer.learned %}<article><h3>{{ item[0] }}</h3><p>{{ item[1] }}</p></article>{% endfor %}
+  </div>
+</section>
+
+<section class="m-sec">
+  <h2>Go deeper</h2>
+  <ol class="m-essays">
+    {% for e in series %}{% if e.layer == layer.key %}
+    <li>
+      <span class="n">{{ e.n | pad2 }}</span>
+      <span class="t">{% if e.url %}<a href="{{ e.url }}"><b>{{ e.title }}</b></a>{% else %}<b>{{ e.title }}</b>{% endif %}<span>{{ e.excerpt }}</span></span>
+      <span class="s {{ e.status }}">{{ e.status | statusLabel }}</span>
+    </li>
+    {% endif %}{% endfor %}
+  </ol>
+  <details class="m-details">
+    <summary>What I'd look at first in your organisation</summary>
+    <ol>{% for q in layer.questions %}<li>{{ q }}</li>{% endfor %}</ol>
+  </details>
+</section>
+
+<section class="m-sec">
+  <div class="m-pager">
+    {% if up %}<a href="/{{ up.slug }}/"><span class="m-eyebrow">↑ Layer above</span><b>{{ up.name }}</b></a>
+    {% else %}<a href="/"><span class="m-eyebrow">↑ Top of the stack</span><b>The whole model</b></a>{% endif %}
+    {% if down %}<a class="next" href="/{{ down.slug }}/"><span class="m-eyebrow">Layer below ↓</span><b>{{ down.name }}</b></a>
+    {% else %}<a class="next" href="/essays/"><span class="m-eyebrow">Read the series →</span><b>Essays</b></a>{% endif %}
+  </div>
+</section>

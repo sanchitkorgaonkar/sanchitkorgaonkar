@@ -1,0 +1,13 @@
+{# Expects `v` = { title, length, youtube } and optional `size` = "small" #}
+{% if v.youtube %}
+<div class="m-video {{ size }}">
+  <iframe src="https://www.youtube-nocookie.com/embed/{{ v.youtube }}?cc_load_policy=1&rel=0" title="{{ v.title }}" loading="lazy"
+    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+{% else %}
+<div class="m-video placeholder {{ size }}" role="img" aria-label="Video coming soon: {{ v.title }}">
+  <span class="m-video-tag">Video coming soon</span>
+  <span class="m-play" aria-hidden="true"></span>
+  <div class="m-video-meta"><b>{{ v.title }}</b><span>{{ v.length }} · captions on</span></div>
+</div>
+{% endif %}

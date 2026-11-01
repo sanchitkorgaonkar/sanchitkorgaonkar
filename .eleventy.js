@@ -1,6 +1,15 @@
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/assets");
+  eleventyConfig.addPassthroughCopy("src/js");
+
+  // Operating-model helpers
+  eleventyConfig.addFilter("neighbour", function(list, key, offset) {
+    const i = list.findIndex(x => x.key === key);
+    return list[i + offset] || null;
+  });
+  eleventyConfig.addFilter("pad2", n => String(n).padStart(2, "0"));
+  eleventyConfig.addFilter("statusLabel", s => ({ live: "Live", draft: "Drafting", planned: "Planned" }[s] || s));
 
   // Simple date filter
   eleventyConfig.addFilter("date", function(date, format) {
