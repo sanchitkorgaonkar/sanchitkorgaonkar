@@ -1,0 +1,13 @@
+{# Expects `list` (array of series entries). Optional `filterable` adds layer data attributes. #}
+<ol class="m-essays">
+  {% for e in list %}{% set l = layers | byKey(e.layer) %}
+  <li data-layer="{{ e.layer }}">
+    <span class="n">{{ e.n | pad2 }}</span>
+    <span class="t">
+      {% if e.url %}<a href="{{ e.url }}"><b>{{ e.title }}</b></a>{% else %}<b>{{ e.title }}</b>{% endif %}
+      <span>{{ e.excerpt }} · <a href="/{{ l.slug }}/">{{ l.name }}</a></span>
+    </span>
+    <span class="s {{ e.status }}">{{ e.status | statusLabel }}</span>
+  </li>
+  {% endfor %}
+</ol>

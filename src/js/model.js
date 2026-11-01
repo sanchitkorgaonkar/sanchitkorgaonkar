@@ -106,6 +106,86 @@
     run();
   }
 
+  // Home: layer stack hover and click
+  const iso = $(".m-iso-wrap");
+  if (iso) {
+    const hot = key => {
+      $$(".m-plane", iso).forEach(p => p.classList.toggle("hot", p.dataset.layer === key));
+      $$(".m-iso-labels a", iso).forEach(a => a.classList.toggle("hot", a.dataset.layer === key));
+    };
+    $$(".m-plane, .m-iso-labels a", iso).forEach(el => {
+      el.addEventListener("mouseenter", () => hot(el.dataset.layer));
+      el.addEventListener("focus", () => hot(el.dataset.layer));
+      el.addEventListener("mouseleave", () => hot(null));
+    });
+    $$(".m-plane", iso).forEach(p => p.addEventListener("click", () => (location.href = p.dataset.href)));
+  }
+
+  // Home: highlight the walk-through stop in view
+  const stops = $$(".m-stop");
+  if (stops.length && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) stops.forEach(s => s.classList.toggle("on", s === e.target.closest(".m-stop")));
+    }), { rootMargin: "-40% 0px -50% 0px" });
+    $$(".m-stopbody").forEach(b => io.observe(b));
+  }
+
+  // Outreach entry: count which problem is picked (Vercel Web Analytics custom event)
+  $$("[data-pick]").forEach(a => a.addEventListener("click", () => {
+    try { window.va && window.va("event", { name: "Problem picked", data: { problem: a.dataset.pick, from: a.dataset.persona } }); } catch (e) {}
+  }));
+
+  // Essays: filter by layer
+  const ef = $("[data-essay-filter]");
+  if (ef) {
+    const items = $$("[data-essay-list] li");
+    $$("button", ef).forEach(b => b.addEventListener("click", () => {
+      $$("button", ef).forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+      items.forEach(li => (li.hidden = b.dataset.filter !== "all" && li.dataset.layer !== b.dataset.filter));
+    }));
+  }
+
+  // Self-check
+  const ck = $('[data-interactive="check"]');
+  if (ck) {
+    const L = JSON.parse($("#check-layers").textContent);
+    const ORDER = ["workflow", "org", "governance", "context"];
+    const QS = [
+      { q: "When AI tools sped up your engineers, what happened to releases?", o: [["They go out noticeably faster", {}], ["About the same as before", { workflow: 2 }], ["Honestly, we can't tell", { governance: 2 }]] },
+      { q: "Where does finished work usually wait?", o: [["In development", {}], ["In review or approval", { workflow: 2 }], ["On another team", { org: 2 }]] },
+      { q: "How many teams does a typical feature touch before a customer sees it?", o: [["One or two", {}], ["Three or four", { org: 1 }], ["Five or more", { org: 2 }]] },
+      { q: "How long does your quarterly review take to prepare?", o: [["A few hours", {}], ["A week or more", { governance: 2 }], ["We gave up on it", { governance: 1, context: 1 }]] },
+      { q: "Do your teams use the same name for the same product area?", o: [["Yes, everywhere", {}], ["Mostly", { context: 1 }], ["No, it depends who you ask", { context: 2 }]] }
+    ];
+    let step = 0, hist = [];
+    const sc = () => { const s = { workflow: 0, org: 0, governance: 0, context: 0 }; hist.forEach(a => Object.keys(a).forEach(k => (s[k] += a[k]))); return s; };
+    const run = () => {
+      if (step < QS.length) {
+        const Q = QS[step];
+        ck.innerHTML = `<div class="m-progress">${QS.map((_, i) => `<i class="${i < step ? "done" : ""}"></i>`).join("")}</div>
+          <span class="m-eyebrow">Question ${step + 1} of ${QS.length}</span><h2>${Q.q}</h2>
+          <div class="m-opts">${Q.o.map((o, i) => `<button type="button" class="m-opt" data-i="${i}">${o[0]}</button>`).join("")}</div>
+          ${step ? '<button type="button" class="m-linkbtn" data-back>← Back</button>' : ""}`;
+        $$(".m-opt", ck).forEach(b => b.addEventListener("click", () => { hist.push(Q.o[+b.dataset.i][1]); step++; run(); }));
+        const bk = $("[data-back]", ck); if (bk) bk.addEventListener("click", () => { hist.pop(); step--; run(); });
+        if (step) { const h = $("h2", ck); h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
+      } else {
+        const s = sc(), max = Math.max(...Object.values(s));
+        const tops = ORDER.filter(k => s[k] === max && max > 0), top = tops[0];
+        try { window.va && window.va("event", { name: "Self-check finished", data: { result: top || "none" } }); } catch (e) {}
+        ck.innerHTML = `<span class="m-illus">A conversation starter, not a benchmark</span>
+          <h2>${top ? `Your likely bottleneck: ${L[top].name.toLowerCase()}${tops.length > 1 ? ` and ${L[tops[1]].name.toLowerCase()}` : ""}.` : "No obvious bottleneck from these answers."}</h2>
+          <div class="m-scores">${ORDER.map(k => `<div class="m-score ${k === top ? "top" : ""}"><b>${L[k].name}</b><span class="bar"><i style="width:${(s[k] / 4) * 100}%"></i></span></div>`).join("")}</div>
+          ${top ? `<p class="m-body">${L[top].title}</p>
+            <div class="m-learned"><article><h3>What I'd look at first</h3><p>${L[top].questions[1]} ${L[top].questions[2]}</p></article></div>
+            <div class="m-row"><a class="m-btn primary" href="/${L[top].slug}/">See how I approached it</a><button type="button" class="m-linkbtn" data-again>Start over</button></div>`
+          : `<p class="m-body">Your organisation may already have absorbed the shift. I'd still be curious how.</p><button type="button" class="m-linkbtn" data-again>Start over</button>`}`;
+        $("[data-again]", ck).addEventListener("click", () => { step = 0; hist = []; run(); });
+      }
+    };
+    run();
+  }
+
   // Context layer: same thing, different names
   const sn = $('[data-interactive="same-thing"]');
   if (sn) {

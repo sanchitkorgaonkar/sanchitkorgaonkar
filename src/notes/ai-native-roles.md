@@ -1,5 +1,5 @@
 ---
-layout: artifact.njk
+layout: note.njk
 title: "AI-Native Roles"
 year: 2026
 type: "Analysis"

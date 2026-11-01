@@ -1,23 +1,44 @@
+{%- set pageTitle = site.name if isHome else ((name or title) + " — " + site.name) -%}
+{%- set pageDesc = description or excerpt or site.description -%}
+{%- set pageImage = site.url + (ogImage or site.ogImage) -%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="{{ description or 'Sanchit Korgaonkar on AI-native operating models: workflow, org design, governance and the context layer underneath.' }}">
-  <title>{% if title and not isHome %}{{ name or title }} — {% endif %}Sanchit Korgaonkar</title>
+  <title>{{ pageTitle }}</title>
+  <meta name="description" content="{{ pageDesc }}">
+  {% if noindex %}<meta name="robots" content="noindex">{% endif %}
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+
+  <meta property="og:type" content="{{ 'article' if layout == 'essay.njk' else 'website' }}">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:title" content="{{ ogTitle or pageTitle }}">
+  <meta property="og:description" content="{{ pageDesc }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:image" content="{{ pageImage }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{{ pageImage }}">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Literata:opsz,wght@7..72,400;7..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="/css/model.css">
   <link rel="icon" type="image/png" href="/assets/favicon.png">
+
+  <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
   <header class="m-top">
     <div class="m-top-in">
-      <a class="m-brand" href="/"><b>Sanchit Korgaonkar</b><span>AI-native operating models</span></a>
+      <a class="m-brand" href="/"><b>{{ site.name }}</b><span>{{ site.tagline }}</span></a>
       <nav class="m-nav" aria-label="Site">
-        <a href="/" {% if isHome %}aria-current="page"{% endif %}>The model</a>
-        <a href="/essays/" {% if page.url.startsWith('/essays') %}aria-current="page"{% endif %}>Essays</a>
+        <a href="/" {% if isHome or layerPage %}aria-current="page"{% endif %}>The model</a>
+        <a href="/essays/" {% if page.url.startsWith('/essays') or page.url.startsWith('/notes') %}aria-current="page"{% endif %}>Essays</a>
+        <a href="/check/" {% if page.url.startsWith('/check') %}aria-current="page"{% endif %}>Self-check</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -31,12 +52,12 @@
         <span class="m-eyebrow">Compare notes</span>
         <p>If you're working through any of this in your organisation, I'd like to hear what you're seeing.</p>
         <div class="m-row">
-          <code id="m-email">sanchit.korgaonkar@gmail.com</code>
+          <code id="m-email">{{ site.email }}</code>
           <button class="m-btn" type="button" data-copy="#m-email">Copy email</button>
-          <a class="m-btn primary" href="https://linkedin.com/in/sanchitkorgaonkar" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="m-btn primary" href="{{ site.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </div>
-      <p class="m-foot">Sanchit Korgaonkar · 2026</p>
+      <p class="m-foot">{{ site.name }} · {{ "now" | year }}</p>
     </section>
   </main>
 

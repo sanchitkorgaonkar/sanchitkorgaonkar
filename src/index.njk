@@ -1,27 +1,110 @@
 ---
-layout: base.njk
-title: ""
-description: "Sanchit Korgaonkar — Principal-level TPM. AI-Native Product Operations & Execution Intelligence."
+layout: model.njk
+isHome: true
+title: "AI made building cheap. Organisations still ship at the speed they decide, align and review."
+description: "How work flows, how teams are shaped and how leaders see when AI makes building cheap: workflow, org design, governance and the context layer underneath."
+video:
+  title: "The model in two minutes"
+  length: "2:00"
+  youtube: null
 ---
+{%- set order = ["workflow", "org", "governance", "context"] -%}
 
-<div class="home-intro">
-
-  <div class="home-photo-wrap">
-    <img src="/assets/sanchitphoto.jpeg" alt="Sanchit Korgaonkar" class="home-photo">
+<section class="m-sec">
+  <div class="m-hero">
+    <div class="m-hero-copy">
+      <span class="m-eyebrow">AI transformation, from the inside</span>
+      <h1>AI made building cheap. Organisations still ship at the speed they decide, align and review.</h1>
+      <p class="m-lede">I design and drive the redesign of how work flows, how teams are shaped and how leaders see, inside an AI-native transformation. All three sit on a shared context layer. This site is what I've learned building them.</p>
+    </div>
+    <div class="m-iso-wrap">
+      <div class="m-iso" aria-hidden="true">
+        <div class="m-plane p-context" style="--i:0" data-layer="context" data-href="/context-layer/"></div>
+        <div class="m-plane p-workflow" style="--i:1" data-layer="workflow" data-href="/workflow/"><div class="track"><i class="g-ai"></i><i class="g-ai"></i><i class="g-human"></i><i class="g-ai"></i><i class="g-human"></i><i class="g-ai"></i><i class="g-human"></i></div></div>
+        <div class="m-plane p-org" style="--i:2" data-layer="org" data-href="/org-design/"><div class="grid">{% for n in range(9) %}<i></i>{% endfor %}</div></div>
+        <div class="m-plane p-gov" style="--i:3" data-layer="governance" data-href="/governance/"><div class="bars"><i class="ai" style="width:88%"></i><i style="width:62%"></i><i class="ai" style="width:74%"></i><i style="width:46%"></i><i class="ai" style="width:80%"></i></div></div>
+      </div>
+      <ul class="m-iso-labels">
+        {% for l in layers %}<li><a href="/{{ l.slug }}/" data-layer="{{ l.key }}"><b>{{ l.name }}</b><span>{{ l.sub }}</span></a></li>{% endfor %}
+      </ul>
+    </div>
   </div>
+</section>
 
-  <div class="home-bio">
-    <p class="home-bio-lede">AI made teams faster at building. It did not make organizations faster at shipping.</p>
-    <p>Across the last year I watched individual and team output rise sharply with AI tooling — and watched org-level throughput stay flat. The bottleneck moved. It's no longer how fast you can build; it's how fast you can decide what to build, align people, and resolve dependencies across teams. Most orgs are pouring budget into tools that accelerate building and almost nothing into the layer that coordinates it.</p>
-    <p>That's the space I've been exploring through my work.</p>
-    <p>I build execution systems that help organizations convert faster building into better outcomes — whether through execution intelligence, roadmap and prioritization frameworks, workflow redesign, or AI-assisted decision support.</p>
-    <p>This site is a collection of that exploration:</p>
-    <p><a href="/essays/" class="bio-section-link"><strong>Essays</strong></a> — observations and frameworks on how AI is changing product development, organizational execution, and operating models.</p>
-    <p><a href="/projects/" class="bio-section-link"><strong>Projects</strong></a> — working prototypes built around real execution and product challenges, not hypothetical use cases.</p>
-    <p><a href="/artifacts/" class="bio-section-link"><strong>Artifacts</strong></a> — templates, operating principles, playbooks, and structured outputs that emerged from solving those problems.</p>
-    <p>I'm still learning, experimenting, and refining my thinking. But I'm increasingly convinced that the future advantage won't come from using AI to build faster alone — it will come from helping organizations make better decisions and execute more effectively.</p>
-    <p>If you've observed similar shifts in your organization, I'd love to connect and exchange perspectives.</p>
+<section class="m-sec">
+  <div class="m-col">
+    {% set v = video %}{% set size = "" %}{% include "partials/video.njk" %}
   </div>
+</section>
 
+<section class="m-sec">
+  <h2>What changes when building gets cheap</h2>
+  <div class="m-shifts">
+    {% for key in order %}{% set l = layers | byKey(key) %}
+    <a class="m-shift" href="/{{ l.slug }}/"><span class="ly">{{ l.name }}</span><span class="from">{{ l.shift[0] }}</span><span class="arr" aria-hidden="true">→</span><span class="to">{{ l.shift[1] }}</span></a>
+    {% endfor %}
+  </div>
+</section>
 
-</div>
+<section class="m-sec">
+  <span class="m-eyebrow">The full story · three minutes</span>
+  <h2>Follow one small customer fix through the organisation.</h2>
+  <p class="m-lede">It should take a day. Here's where it actually goes, and what I redesigned at each stop.</p>
+  <div class="m-walk">
+    <div class="m-stop on"><div class="m-rail"><span class="m-dot">1</span></div><div class="m-stopbody">
+      <span class="m-req"><i></i>A customer asks for a small fix</span>
+      <h3>It arrives under three different names.</h3>
+      <p class="m-body">The customer describes what they see on screen. The roadmap knows that area by a codename. The alerts call it a service. An agent reading all three sees three unrelated things.</p>
+      <div class="m-names"><span>“the report page”</span><span>roadmap codename</span><span>alerting service</span></div>
+      <p class="m-redesign"><b>Context layer:</b> one place that maps names across tools, so the request arrives with its history attached.</p>
+      <div class="m-stoplinks"><a class="m-link" href="/context-layer/">The context layer →</a><a class="m-link" href="/essays/the-layer-underneath/">Essay 1 →</a></div>
+    </div></div>
+    <div class="m-stop"><div class="m-rail"><span class="m-dot">2</span></div><div class="m-stopbody">
+      <h3>An agent drafts the fix in hours. Then it waits.</h3>
+      <div class="m-mlanes" aria-hidden="true">
+        <div class="m-mlane"><span>Build</span><span class="bar"><i class="ai" style="width:12%"></i></span></div>
+        <div class="m-mlane"><span>Review</span><span class="bar"><i class="wait" style="width:78%"></i></span></div>
+        <div class="m-mlane"><span>Ship</span><span class="bar"><i style="width:10%"></i></span></div>
+      </div>
+      <p class="m-body">Building got cheap. Review didn't. Nearly everything in flight sits waiting for someone to approve it.</p>
+      <p class="m-redesign"><b>Workflow:</b> human gates only where there's judgment, and related fixes reviewed together.</p>
+      <div class="m-stoplinks"><a class="m-link" href="/workflow/">Workflow →</a></div>
+    </div></div>
+    <div class="m-stop"><div class="m-rail"><span class="m-dot">3</span></div><div class="m-stopbody">
+      <h3>It touches three teams, so it crosses three queues.</h3>
+      <div class="m-mchain"><span>Frontend</span><em>wait →</em><span>Backend</span><em>wait →</em><span>Data</span><em>wait →</em><span>QA</span></div>
+      <p class="m-body">Each team has its own priorities. The fix is small; the waiting isn't.</p>
+      <p class="m-redesign"><b>Org design:</b> small pods that own an outcome end to end, with an agent doing the first cross-domain pass.</p>
+      <div class="m-stoplinks"><a class="m-link" href="/org-design/">Org design →</a></div>
+    </div></div>
+    <div class="m-stop"><div class="m-rail"><span class="m-dot">4</span></div><div class="m-stopbody">
+      <h3>The monthly report says it shipped. It hadn't.</h3>
+      <div class="m-mreport"><span>Customer fix · status</span><span><s>Shipped</s> · in review</span></div>
+      <p class="m-body">Status fields drift. A report assembled from them is confidently wrong, and the team presenting it can't explain why.</p>
+      <p class="m-redesign"><b>Governance:</b> an agent drafts the health check, the team corrects it and owns it, and nothing reaches leadership that nobody stands behind.</p>
+      <div class="m-stoplinks"><a class="m-link" href="/governance/">Governance →</a></div>
+    </div></div>
+  </div>
+</section>
+
+<section class="m-sec">
+  <div class="m-headrow"><h2>The essay series</h2><a class="m-link" href="/essays/">All essays and notes →</a></div>
+  {% set list = series %}{% include "partials/essay-list.njk" %}
+</section>
+
+<section class="m-sec">
+  <div class="m-band">
+    <div><h3>Where is your organisation's bottleneck?</h3><p class="m-small">Five questions, two minutes, no sign-up.</p></div>
+    <a class="m-btn primary" href="/check/">Take the self-check</a>
+  </div>
+</section>
+
+<section class="m-sec">
+  <div class="m-about">
+    <img src="/assets/sanchitphoto.jpeg" alt="Sanchit Korgaonkar" width="120" height="120">
+    <div class="m-about-txt">
+      <p class="m-body">I've spent fifteen years making large programs land, from global payments launches at Mastercard to B2B SaaS. The pattern held everywhere: the constraint was rarely how fast people could build. It was how fast the organisation could decide, align and verify. AI made that gap impossible to ignore, so I started redesigning the layer where it lives.</p>
+      <p class="m-small">Staff Technical Program Manager · Certified in AI Foundations and Strategy (Reforge)</p>
+    </div>
+  </div>
+</section>

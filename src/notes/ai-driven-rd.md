@@ -1,5 +1,5 @@
 ---
-layout: artifact.njk
+layout: note.njk
 title: "How much of your R&D can actually be AI-driven?"
 year: 2026
 type: "Analysis"

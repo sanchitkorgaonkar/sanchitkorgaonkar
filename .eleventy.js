@@ -9,6 +9,14 @@ module.exports = function(eleventyConfig) {
     return list[i + offset] || null;
   });
   eleventyConfig.addFilter("pad2", n => String(n).padStart(2, "0"));
+  eleventyConfig.addFilter("byKey", (list, key) => list.find(x => x.key === key));
+  eleventyConfig.addFilter("year", () => new Date().getFullYear());
+  eleventyConfig.addFilter("checkData", list => Object.fromEntries(list.map(l => [l.key, {
+    name: l.name, slug: l.slug, title: l.title, questions: l.questions
+  }])));
+  eleventyConfig.addFilter("seriesFor", (series, key) => series.filter(e => e.layer === key));
+  eleventyConfig.addFilter("seriesNext", (series, n) => series.find(e => e.n === n + 1) || null);
+  eleventyConfig.addFilter("seriesEntry", (series, url) => series.find(e => e.url === url) || null);
   eleventyConfig.addFilter("statusLabel", s => ({ live: "Live", draft: "Drafting", planned: "Planned" }[s] || s));
 
   // Simple date filter
@@ -29,12 +37,10 @@ module.exports = function(eleventyConfig) {
     return collectionApi.getFilteredByGlob("src/essays/*.md").reverse();
   });
 
-  eleventyConfig.addCollection("prototype", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("src/prototype/*.md").reverse();
-  });
-
   eleventyConfig.addCollection("notes", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("src/notes/*.md").reverse();
+    return collectionApi.getFilteredByGlob("src/notes/*.md")
+      .filter(n => !n.data.hidden)
+      .sort((a, b) => (b.data.year || 0) - (a.data.year || 0));
   });
 
   return {

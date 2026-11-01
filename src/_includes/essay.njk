@@ -1,22 +1,32 @@
 ---
-layout: base.njk
+layout: model.njk
 ---
-
-<article>
-  <header class="article-header">
-    <div class="article-label">Essay</div>
-    <h1 class="article-title">{{ title }}</h1>
-    <div class="article-meta">
-      {{ date | date("D MMMM YYYY") if date }}
-      {% if readtime %} &nbsp;·&nbsp; {{ readtime }} min read{% endif %}
+{%- set entry = series | seriesEntry(page.url) -%}
+{%- set l = layers | byKey(entry.layer) if entry else null -%}
+{%- set next = series | seriesNext(entry.n) if entry else null -%}
+<section class="m-sec">
+  <article class="m-article">
+    <a class="m-link" href="/essays/">← All essays</a>
+    {% if entry and l %}
+    <div class="m-partof">
+      <span class="m-mini" aria-hidden="true">{% for x in layers %}<i class="{{ 'on' if x.key == l.key }}"></i>{% endfor %}</span>
+      <span><span class="m-eyebrow">Essay {{ entry.n }} of {{ series.length }} · {{ l.name }}</span><a class="m-link" href="/{{ l.slug }}/">See this layer in practice →</a></span>
     </div>
-  </header>
-
-  <div class="article-body">
-    {{ content | safe }}
-  </div>
-
-  <div class="article-back">
-    <a href="/essays/">← All essays</a>
-  </div>
-</article>
+    {% endif %}
+    <h1>{{ title }}</h1>
+    <p class="m-meta">{{ date | date("D MMMM YYYY") if date }}{% if readtime %} · {{ readtime }} min read{% endif %}</p>
+    <div class="m-prose">
+      {{ content | safe }}
+    </div>
+    {% if next %}
+    <div class="m-band">
+      <div><span class="m-eyebrow">Next in the series</span><h3>Essay {{ next.n }} · {{ next.title }}</h3><span class="m-small">{{ next.status | statusLabel }} · {{ (layers | byKey(next.layer)).name }}</span></div>
+      {% if next.url %}<a class="m-btn" href="{{ next.url }}">Read it</a>{% else %}<a class="m-btn" href="/{{ (layers | byKey(next.layer)).slug }}/">See the layer</a>{% endif %}
+    </div>
+    {% endif %}
+    <div class="m-band">
+      <div><h3>Does this match your organisation?</h3><span class="m-small">Five questions, two minutes.</span></div>
+      <a class="m-btn primary" href="/check/">Take the self-check</a>
+    </div>
+  </article>
+</section>

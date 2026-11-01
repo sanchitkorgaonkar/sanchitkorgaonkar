@@ -6,6 +6,7 @@
 module.exports = [
   {
     key: "governance",
+    shift: ["Teams write status for leadership", "Teams correct a draft and own it"],
     slug: "governance",
     name: "Governance",
     sub: "How leaders see",
@@ -34,6 +35,7 @@ module.exports = [
   },
   {
     key: "org",
+    shift: ["Functions own their piece of the work", "Small teams own an outcome end to end"],
     slug: "org-design",
     name: "Org design",
     sub: "How teams are shaped",
@@ -62,6 +64,7 @@ module.exports = [
   },
   {
     key: "workflow",
+    shift: ["Building is the scarce step", "Deciding it's right is the scarce step"],
     slug: "workflow",
     name: "Workflow",
     sub: "How work flows",
@@ -91,6 +94,7 @@ module.exports = [
   },
   {
     key: "context",
+    shift: ["Context sits in each team's tools", "Context is assembled where everyone reads it"],
     slug: "context-layer",
     name: "Context layer",
     sub: "The foundation",

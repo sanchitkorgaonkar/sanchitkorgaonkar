@@ -1,8 +1,8 @@
 ---
-layout: project.njk
+layout: note.njk
 title: "Single workflow for the thinking as well as the prototypes"
 year: 2026
-status: live
+type: "Build log"
 stack: "Eleventy · Vercel · Claude Code"
 excerpt: "I almost put this on Substack. Then I realized building it in Claude Code — where my prototypes already live — would do two jobs at once."
 ---

@@ -1,0 +1,17 @@
+---
+layout: model.njk
+permalink: /check/
+title: "Where is your organisation's real bottleneck?"
+name: "Self-check"
+description: "Five questions, two minutes, no sign-up. See which layer is most likely slowing your organisation down, and what to look at first."
+ogImage: "/assets/og/check.png"
+---
+<section class="m-sec">
+  <span class="m-eyebrow">Self-check · five questions · no sign-up</span>
+  <h1 class="m-col">Where is your organisation's real bottleneck?</h1>
+  <p class="m-lede">Answer for your own organisation. You'll see which layer is most likely slowing you down, and what I'd look at first.</p>
+  <div class="m-check" data-interactive="check">
+    <noscript><p class="m-small">The self-check needs JavaScript.</p></noscript>
+  </div>
+  <script type="application/json" id="check-layers">{{ layers | checkData | dump | safe }}</script>
+</section>

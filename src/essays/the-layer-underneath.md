@@ -4,9 +4,9 @@ title: "The Layer Underneath"
 date: 2026-06-12
 excerpt: "AI made teams faster at building. It did not make organizations faster at shipping. The bottleneck moved — and most orgs are investing in the wrong layer."
 readtime: 12
+n: 1
 ---
 
-<!-- Paste sanitized essay content here -->
 
 A few weeks ago I was looking at the release count for a quarter - features shipped, milestones hit, the standard execution view leadership wants to see going into a planning cycle. I pulled the numbers expecting the chart to bend upward. It didn't. The quarter was the same against the one before it. 
 

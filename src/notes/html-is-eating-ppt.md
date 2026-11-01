@@ -1,5 +1,5 @@
 ---
-layout: artifact.njk
+layout: note.njk
 title: "HTML Is Eating PPT"
 year: 2026
 type: "Analysis"
