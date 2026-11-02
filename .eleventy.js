@@ -13,7 +13,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("byKey", (list, key) => list.find(x => x.key === key));
   eleventyConfig.addFilter("year", () => new Date().getFullYear());
   eleventyConfig.addFilter("checkData", list => Object.fromEntries(list.map(l => [l.key, {
-    name: l.name, slug: l.slug, title: l.title, questions: l.questions
+    n: l.n, name: l.name, slug: l.slug, title: l.title, questions: l.questions
   }])));
   eleventyConfig.addFilter("seriesFor", (series, key) => series.filter(e => e.layer === key));
   eleventyConfig.addFilter("seriesNext", (series, n) => series.find(e => e.n === n + 1) || null);
