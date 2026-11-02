@@ -454,3 +454,5 @@ p{margin:0}
 .m-pager a.next b{justify-content:flex-end}
 .m-now-head .m-num{margin-right:0}
 .m-score b{display:flex;align-items:center}
+/* Badge keeps its own colours inside label rules that recolour every span */
+.m-wrap .m-num.m-num{color:var(--paper);font-size:11px;letter-spacing:0}
