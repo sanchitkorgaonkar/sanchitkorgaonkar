@@ -1,0 +1,67 @@
+---
+layout: model.njk
+permalink: /about/
+title: "About"
+name: "About"
+description: "Sanchit Korgaonkar leads the redesign of workflow, org design and governance inside an AI-native transformation, after fifteen years making large programs land."
+---
+<section class="m-sec">
+  <div class="m-about-hero">
+    <img src="/assets/sanchitphoto.jpeg" alt="Sanchit Korgaonkar" width="160" height="160">
+    <div class="m-about-hero-txt">
+      <span class="m-eyebrow">About</span>
+      <h1>Sanchit Korgaonkar</h1>
+      <p class="m-about-role">Staff Technical Program Manager · AI-native operating models</p>
+      <p class="m-lede">I've spent fifteen years making large programs land. The constraint was rarely how fast people could build. It was how fast the organisation could decide, align and verify. AI made that gap impossible to ignore, and it's the gap I now work on full time.</p>
+    </div>
+  </div>
+</section>
+
+<section class="m-sec">
+  <h2>What I'm working on now</h2>
+  <p class="m-body m-col">I lead the redesign of how work flows, how teams are shaped and how leaders see inside an AI-native transformation at a B2B SaaS company. All three run on a shared context layer I built underneath them.</p>
+  <div class="m-now">
+    {% for key in ["workflow", "org", "governance", "context"] %}{% set l = layers | byKey(key) %}
+    <a class="m-now-item" href="/{{ l.slug }}/">
+      <span class="m-now-head"><i class="g-{{ l.glyph }}" aria-hidden="true"></i><b>{{ l.name }}</b><span class="m-status {{ l.status.tone }}">{{ l.status.label }}</span></span>
+      <span class="m-now-txt">{{ aboutNow[key] }}</span>
+      <span class="m-link">{{ l.sub }} →</span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="m-sec">
+  <h2>How I got here</h2>
+  <ol class="m-timeline">
+    <li>
+      <span class="m-when">2021 – now</span>
+      <div><h3>B2B SaaS · Senior, then Staff Technical Program Manager</h3>
+        <p class="m-body">Ran the planning and portfolio governance for a multi-product R&amp;D organisation. Consolidated dozens of enterprise datasets into one data platform. Then moved into AI: built an execution-intelligence prototype that reads across the tools teams already use, and from there the AI-native operating model this site describes.</p></div>
+    </li>
+    <li>
+      <span class="m-when">2019 – 2021</span>
+      <div><h3>Mastercard · Manager, Technical Program Management</h3>
+        <p class="m-body">Built and scaled a ten-person TPM organisation and ran global fintech programs across business and technology teams, including global launches.</p></div>
+    </li>
+  </ol>
+</section>
+
+<section class="m-sec">
+  <h2>How I work</h2>
+  <div class="m-principles">
+    <article><h3>Build it, don't just recommend it</h3><p>I'd rather put a working version in front of a team than a slide about one. Most of what this site describes started as a rough first version that teams used, corrected and made their own.</p></article>
+    <article><h3>One system of record</h3><p>If the plan lives in threads and decks, it doesn't exist for anyone else. Every redesign I run starts by getting the work into one place people trust.</p></article>
+    <article><h3>Put the human where the judgment is</h3><p>Agents can draft most of the work. The design question is which decisions need a person, and making those decisions fast.</p></article>
+    <article><h3>Lead without the org chart</h3><p>The biggest changes I've run moved people I didn't manage. That works when the plan is visible, the rehearsal happens before go-live, and readiness is measured, not assumed.</p></article>
+  </div>
+</section>
+
+<section class="m-sec">
+  <h2>Elsewhere</h2>
+  <ul class="m-facts">
+    <li><span>Certification</span><b>AI Foundations and Strategy, Reforge (2025)</b></li>
+    <li><span>Writing</span><b><a href="/essays/">A ten-part series on the AI-native organisation</a></b></li>
+    <li><span>Full history</span><b><a href="{{ site.linkedin }}" target="_blank" rel="noopener">LinkedIn</a></b></li>
+  </ul>
+</section>

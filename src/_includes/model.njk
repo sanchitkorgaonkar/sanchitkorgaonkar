@@ -39,7 +39,7 @@
         <a href="/" {% if isHome or layerPage %}aria-current="page"{% endif %}>The model</a>
         <a href="/essays/" {% if page.url.startsWith('/essays') or page.url.startsWith('/notes') %}aria-current="page"{% endif %}>Essays</a>
         <a href="/check/" {% if page.url.startsWith('/check') %}aria-current="page"{% endif %}>Self-check</a>
-        <a href="#contact">Contact</a>
+        <a href="/about/" {% if page.url.startsWith('/about') %}aria-current="page"{% endif %}>About</a>
       </nav>
     </div>
   </header>
