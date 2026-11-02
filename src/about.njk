@@ -3,7 +3,7 @@ layout: model.njk
 permalink: /about/
 title: "About"
 name: "About"
-description: "Sanchit Korgaonkar leads the redesign of workflow, org design and governance inside an AI-native transformation, after fifteen years making large programs land."
+description: "Sanchit Korgaonkar leads the redesign of workflow, org design and governance inside an AI-native transformation, after seventeen years making large programs land."
 ---
 <section class="m-sec">
   <div class="m-about-hero">
@@ -12,14 +12,14 @@ description: "Sanchit Korgaonkar leads the redesign of workflow, org design and 
       <span class="m-eyebrow">About</span>
       <h1>Sanchit Korgaonkar</h1>
       <p class="m-about-role">Staff Technical Program Manager · AI-native operating models</p>
-      <p class="m-lede">I've spent fifteen years making large programs land. The constraint was rarely how fast people could build. It was how fast the organisation could decide, align and verify. AI made that gap impossible to ignore, and it's the gap I now work on full time.</p>
+      <p class="m-lede">I've spent seventeen years making large programs land, across fintech and enterprise SaaS. The constraint was rarely how fast people could build. It was how fast the organisation could decide, align and verify. AI made that gap impossible to ignore, and it's the gap I now work on full time.</p>
     </div>
   </div>
 </section>
 
 <section class="m-sec">
   <h2>What I'm working on now</h2>
-  <p class="m-body m-col">I lead the redesign of how work flows, how teams are shaped and how leaders see inside an AI-native transformation at a B2B SaaS company. All three run on a shared context layer I built underneath them.</p>
+  <p class="m-body m-col">I lead the redesign of how work flows, how teams are shaped and how leaders see inside an AI-native transformation at a B2B SaaS company. All three run on a shared context layer that started as my hackathon project and grew into the foundation underneath them.</p>
   <div class="m-now">
     {% for key in ["workflow", "org", "governance", "context"] %}{% set l = layers | byKey(key) %}
     <a class="m-now-item" href="/{{ l.slug }}/">
@@ -37,12 +37,32 @@ description: "Sanchit Korgaonkar leads the redesign of workflow, org design and 
     <li>
       <span class="m-when">2021 – now</span>
       <div><h3>B2B SaaS · Senior, then Staff Technical Program Manager</h3>
-        <p class="m-body">Ran the planning and portfolio governance for a multi-product R&amp;D organisation. Consolidated dozens of enterprise datasets into one data platform. Then moved into AI: built an execution-intelligence prototype that reads across the tools teams already use, and from there the AI-native operating model this site describes.</p></div>
+        <p class="m-body">Leading the shift to an AI-native operating model across a roughly 250-person R&amp;D organisation, spanning product, engineering, design, QA, documentation and research. Before that, ran portfolio governance and planning across fifteen squads, and managed a team of TPMs.</p></div>
     </li>
     <li>
       <span class="m-when">2019 – 2021</span>
       <div><h3>Mastercard · Manager, Technical Program Management</h3>
-        <p class="m-body">Built and scaled a ten-person TPM organisation and ran global fintech programs across business and technology teams, including global launches.</p></div>
+        <p class="m-body">Built and scaled a ten-person TPM organisation and ran global fintech programs across business and technology teams, including flagship global launches and partner integrations.</p></div>
+    </li>
+    <li>
+      <span class="m-when">2014 – 2019</span>
+      <div><h3>Cognizant · Product Owner, then Program Manager</h3>
+        <p class="m-body">Cloud migration and re-platforming for enterprise clients, coordinating cross-functional teams across geographies.</p></div>
+    </li>
+    <li>
+      <span class="m-when">2013 – 2014</span>
+      <div><h3>MAQ Software · Associate Project Manager</h3>
+        <p class="m-body">Led an engineering team delivering BI solutions for Microsoft's global marketing operations.</p></div>
+    </li>
+    <li>
+      <span class="m-when">2011 – 2013</span>
+      <div><h3>IIT Bombay · Master of Management</h3>
+        <p class="m-body">Management information systems, SJM School of Management.</p></div>
+    </li>
+    <li>
+      <span class="m-when">2007 – 2011</span>
+      <div><h3>Amdocs · Subject Matter Expert</h3>
+        <p class="m-body">Core product development on a revenue-management system. Where I learned how software actually gets built.</p></div>
     </li>
   </ol>
 </section>
@@ -60,7 +80,9 @@ description: "Sanchit Korgaonkar leads the redesign of workflow, org design and 
 <section class="m-sec">
   <h2>Elsewhere</h2>
   <ul class="m-facts">
-    <li><span>Certification</span><b>AI Foundations and Strategy, Reforge (2025)</b></li>
+    <li><span>Recognition</span><b>Founder's Award (2025) for the R&amp;D AI roadmap · AI Captain Award (2026) for org-wide AI adoption · Hackathon special mention (2026) for the execution-intelligence system · Exemplary TPM Award, Mastercard (2020)</b></li>
+    <li><span>Certifications</span><b>Reforge, AI Foundations and AI Productivity (2025) · PMI Agile Certified Practitioner (2018)</b></li>
+    <li><span>Education</span><b>IIT Bombay, Master of Management · VJTI, Bachelor of Engineering in IT</b></li>
     <li><span>Writing</span><b><a href="/essays/">A ten-part series on the AI-native organisation</a></b></li>
     <li><span>Full history</span><b><a href="{{ site.linkedin }}" target="_blank" rel="noopener">LinkedIn</a></b></li>
   </ul>
