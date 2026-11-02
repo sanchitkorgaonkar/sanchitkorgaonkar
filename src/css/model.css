@@ -456,3 +456,5 @@ p{margin:0}
 .m-score b{display:flex;align-items:center}
 /* Badge keeps its own colours inside label rules that recolour every span */
 .m-wrap .m-num.m-num{color:var(--paper);font-size:11px;letter-spacing:0}
+.m-closing p.m-or{font-family:var(--f-display);font-size:14px;color:var(--muted)}
+.m-closing .m-or .m-linkbtn{margin-left:6px}
