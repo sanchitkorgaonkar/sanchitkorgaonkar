@@ -16,12 +16,12 @@ eleventyComputed:
 
 <section class="m-sec m-lhead-sec">
   <nav class="m-where" aria-label="The four layers">
-    {% for l in layers %}<a href="/{{ l.slug }}/" {% if l.key == layer.key %}aria-current="page"{% endif %}><i class="g-{{ l.glyph }}"></i>{{ l.name }}</a>{% endfor %}
+    {% for l in layers %}<a href="/{{ l.slug }}/" {% if l.key == layer.key %}aria-current="page"{% endif %}><span class="m-num">{{ l.n }}</span>{{ l.name }}</a>{% endfor %}
   </nav>
   <p class="m-said" data-said hidden>You said: <q>{{ layer.problem }}</q> Here's what I've learned about it.</p>
   <div class="m-lhead">
     <div class="m-lhead-txt">
-      <span class="m-eyebrow">{{ layer.name }} · {{ layer.sub }}</span>
+      <span class="m-eyebrow">Layer {{ layer.n }} of 4 · {{ layer.sub }}</span>
       <h1>{{ layer.title }}</h1>
       <span class="m-status {{ layer.status.tone }}">{{ layer.status.label }}</span>
       <p class="m-lede">{{ layer.lede }}</p>
@@ -66,9 +66,9 @@ eleventyComputed:
 
 <section class="m-sec">
   <div class="m-pager">
-    {% if up %}<a href="/{{ up.slug }}/"><span class="m-eyebrow">↑ Layer above</span><b>{{ up.name }}</b></a>
-    {% else %}<a href="/"><span class="m-eyebrow">↑ Top of the stack</span><b>The whole model</b></a>{% endif %}
-    {% if down %}<a class="next" href="/{{ down.slug }}/"><span class="m-eyebrow">Layer below ↓</span><b>{{ down.name }}</b></a>
+    {% if up %}<a href="/{{ up.slug }}/"><span class="m-eyebrow">← Previous layer</span><b><span class="m-num">{{ up.n }}</span>{{ up.name }}</b></a>
+    {% else %}<a href="/"><span class="m-eyebrow">← Start</span><b>The whole model</b></a>{% endif %}
+    {% if down %}<a class="next" href="/{{ down.slug }}/"><span class="m-eyebrow">Next layer →</span><b><span class="m-num">{{ down.n }}</span>{{ down.name }}</b></a>
     {% else %}<a class="next" href="/essays/"><span class="m-eyebrow">Read the series →</span><b>Essays</b></a>{% endif %}
   </div>
 </section>

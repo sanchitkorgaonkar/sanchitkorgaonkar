@@ -9,8 +9,8 @@ layout: model.njk
     <a class="m-link" href="/essays/">← All essays</a>
     {% if entry and l %}
     <div class="m-partof">
-      <span class="m-mini" aria-hidden="true">{% for x in layers %}<i class="{{ 'on' if x.key == l.key }}"></i>{% endfor %}</span>
-      <span><span class="m-eyebrow">Essay {{ entry.n }} of {{ series.length }} · {{ l.name }}</span><a class="m-link" href="/{{ l.slug }}/">See this layer in practice →</a></span>
+      <span class="m-mini" aria-hidden="true">{% for x in layers | reverse %}<i class="{{ 'on' if x.key == l.key }}"></i>{% endfor %}</span>
+      <span><span class="m-eyebrow">Essay {{ entry.n }} of {{ series.length }} · Layer {{ l.n }} · {{ l.name }}</span><a class="m-link" href="/{{ l.slug }}/">See this layer in practice →</a></span>
     </div>
     {% endif %}
     <h1>{{ title }}</h1>
@@ -20,7 +20,7 @@ layout: model.njk
     </div>
     {% if next %}
     <div class="m-band">
-      <div><span class="m-eyebrow">Next in the series</span><h3>Essay {{ next.n }} · {{ next.title }}</h3><span class="m-small">{{ next.status | statusLabel }} · {{ (layers | byKey(next.layer)).name }}</span></div>
+      <div><span class="m-eyebrow">Next in the series</span><h3>Essay {{ next.n }} · {{ next.title }}</h3><span class="m-small">{{ next.status | statusLabel }} · Layer {{ (layers | byKey(next.layer)).n }} · {{ (layers | byKey(next.layer)).name }}</span></div>
       {% if next.url %}<a class="m-btn" href="{{ next.url }}">Read it</a>{% else %}<a class="m-btn" href="/{{ (layers | byKey(next.layer)).slug }}/">See the layer</a>{% endif %}
     </div>
     {% endif %}

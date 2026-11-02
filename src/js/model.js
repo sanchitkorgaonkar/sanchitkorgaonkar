@@ -149,7 +149,7 @@
   const ck = $('[data-interactive="check"]');
   if (ck) {
     const L = JSON.parse($("#check-layers").textContent);
-    const ORDER = ["workflow", "org", "governance", "context"];
+    const ORDER = ["context", "workflow", "org", "governance"];
     const QS = [
       { q: "When AI tools sped up your engineers, what happened to releases?", o: [["They go out noticeably faster", {}], ["About the same as before", { workflow: 2 }], ["Honestly, we can't tell", { governance: 2 }]] },
       { q: "Where does finished work usually wait?", o: [["In development", {}], ["In review or approval", { workflow: 2 }], ["On another team", { org: 2 }]] },
@@ -174,8 +174,8 @@
         const tops = ORDER.filter(k => s[k] === max && max > 0), top = tops[0];
         try { window.va && window.va("event", { name: "Self-check finished", data: { result: top || "none" } }); } catch (e) {}
         ck.innerHTML = `<span class="m-illus">A conversation starter, not a benchmark</span>
-          <h2>${top ? `Your likely bottleneck: ${L[top].name.toLowerCase()}${tops.length > 1 ? ` and ${L[tops[1]].name.toLowerCase()}` : ""}.` : "No obvious bottleneck from these answers."}</h2>
-          <div class="m-scores">${ORDER.map(k => `<div class="m-score ${k === top ? "top" : ""}"><b>${L[k].name}</b><span class="bar"><i style="width:${(s[k] / 4) * 100}%"></i></span></div>`).join("")}</div>
+          <h2>${top ? `Your likely bottleneck: layer ${L[top].n}, ${L[top].name.toLowerCase()}${tops.length > 1 ? `, and layer ${L[tops[1]].n}, ${L[tops[1]].name.toLowerCase()}` : ""}.` : "No obvious bottleneck from these answers."}</h2>
+          <div class="m-scores">${ORDER.map(k => `<div class="m-score ${k === top ? "top" : ""}"><b><span class="m-num">${L[k].n}</span>${L[k].name}</b><span class="bar"><i style="width:${(s[k] / 4) * 100}%"></i></span></div>`).join("")}</div>
           ${top ? `<p class="m-body">${L[top].title}</p>
             <div class="m-learned"><article><h3>What I'd look at first</h3><p>${L[top].questions[1]} ${L[top].questions[2]}</p></article></div>
             <div class="m-row"><a class="m-btn primary" href="/${L[top].slug}/">See how I approached it</a><button type="button" class="m-linkbtn" data-again>Start over</button></div>`

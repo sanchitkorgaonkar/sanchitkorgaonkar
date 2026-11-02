@@ -1,11 +1,10 @@
 {# Outreach entry. Optional `persona` from personas.js. #}
-{%- set order = ["workflow", "org", "governance", "context"] -%}
 <section class="m-sec m-start">
   {% if persona %}<div class="m-greet"><b>Sanchit shared this with you.</b> It's written for {{ persona.who }}. Pick whatever's closest; it takes a minute.</div>{% endif %}
   <h1 class="m-col">What are you seeing in your organisation?</h1>
   <p class="m-lede">Pick the one that's closest. I'll show you what I've learned about it, from redesigning it inside an AI transformation.</p>
   <div class="m-problems">
-    {% for key in order %}{% set l = layers | byKey(key) %}
+    {% for l in layers %}{% set key = l.key %}
     <a class="m-problem" href="/{{ l.slug }}/?said=1" data-pick="{{ l.key }}" data-persona="{{ persona.slug if persona else 'generic' }}">
       {% if persona and persona.hint == key %}<span class="m-hint">Most {{ persona.short | lower }} leaders start here</span>{% endif %}
       <q>{{ l.problem }}</q><span class="go">Show me →</span>

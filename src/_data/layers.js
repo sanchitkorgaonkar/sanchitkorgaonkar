@@ -1,11 +1,13 @@
-// The four layers of the operating model, top of the stack first.
-// One vocabulary everywhere: Workflow · Org design · Governance · Context layer.
+// The four layers of the operating model, numbered from the foundation up:
+// 1 Context layer · 2 Workflow · 3 Org design · 4 Governance. Exported in number order.
+// One vocabulary everywhere: 1 Context layer · 2 Workflow · 3 Org design · 4 Governance.
 // Rule: at most one number per layer, in `field`.
 // To add a video, set `video.youtube` to the YouTube video ID.
 
-module.exports = [
+const layers = [
   {
     key: "governance",
+    n: 4,
     shift: ["Teams write status for leadership", "Teams correct a draft and own it"],
     slug: "governance",
     name: "Governance",
@@ -35,6 +37,7 @@ module.exports = [
   },
   {
     key: "org",
+    n: 3,
     shift: ["Functions own their piece of the work", "Small teams own an outcome end to end"],
     slug: "org-design",
     name: "Org design",
@@ -64,6 +67,7 @@ module.exports = [
   },
   {
     key: "workflow",
+    n: 2,
     shift: ["Building is the scarce step", "Deciding it's right is the scarce step"],
     slug: "workflow",
     name: "Workflow",
@@ -94,6 +98,7 @@ module.exports = [
   },
   {
     key: "context",
+    n: 1,
     shift: ["Context sits in each team's tools", "Context is assembled where everyone reads it"],
     slug: "context-layer",
     name: "Context layer",
@@ -122,3 +127,5 @@ module.exports = [
     video: { title: "The context layer in 90 seconds", length: "1:30", youtube: null }
   }
 ];
+
+module.exports = layers.sort((a, b) => a.n - b.n);

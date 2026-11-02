@@ -442,3 +442,15 @@ p{margin:0}
 .m-about-role{font:inherit;letter-spacing:0;display:flex;flex-direction:column;gap:2px}
 .m-about-role b{font-weight:600;font-size:18px;color:var(--ink)}
 .m-about-role span{font-size:16px;color:var(--muted)}
+
+/* ===== layer number badge ===== */
+.m-num{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 4px;margin-right:7px;border-radius:3px;
+  background:var(--ink);color:var(--paper);font:600 11px/1 var(--f-mono);font-variant-numeric:tabular-nums;vertical-align:.12em;flex:none}
+.m-where a .m-num{margin-right:0}
+.m-where a[aria-current="page"] .m-num{background:var(--accent)}
+.m-iso-labels a.hot .m-num,.m-iso-labels a:hover .m-num{background:var(--accent)}
+.m-shift .ly{display:flex;align-items:center}
+.m-pager b{display:inline-flex;align-items:center}
+.m-pager a.next b{justify-content:flex-end}
+.m-now-head .m-num{margin-right:0}
+.m-score b{display:flex;align-items:center}

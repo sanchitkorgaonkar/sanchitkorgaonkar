@@ -21,9 +21,9 @@ description: "Sanchit Korgaonkar leads the redesign of workflow, org design and 
   <h2>What I'm working on now</h2>
   <p class="m-body m-col">I lead efforts to change how work gets done, how teams work together and how leaders review progress as part of an AI transformation at a B2B SaaS company. These efforts are powered by a shared context layer that started as a hackathon project and grew into the foundation for the transformation.</p>
   <div class="m-now">
-    {% for key in ["workflow", "org", "governance", "context"] %}{% set l = layers | byKey(key) %}
+    {% for l in layers %}{% set key = l.key %}
     <a class="m-now-item" href="/{{ l.slug }}/">
-      <span class="m-now-head"><i class="g-{{ l.glyph }}" aria-hidden="true"></i><b>{{ l.name }}</b><span class="m-status {{ l.status.tone }}">{{ l.status.label }}</span></span>
+      <span class="m-now-head"><span class="m-num">{{ l.n }}</span><b>{{ l.name }}</b><span class="m-status {{ l.status.tone }}">{{ l.status.label }}</span></span>
       <span class="m-now-txt">{{ aboutNow[key] }}</span>
       <span class="m-link">{{ l.sub }} →</span>
     </a>

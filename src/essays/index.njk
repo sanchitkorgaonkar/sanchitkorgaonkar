@@ -2,7 +2,7 @@
 layout: model.njk
 title: "Ten essays, each tied to a layer."
 name: "Essays"
-description: "A ten-part series on the AI-native organisation: workflow, org design, governance and the context layer, plus shorter notes."
+description: "A ten-part series on the AI-native organisation across four layers: the context layer, workflow, org design and governance. Plus shorter notes."
 ---
 <section class="m-sec">
   <span class="m-eyebrow">Series · The AI-native organisation</span>
@@ -10,7 +10,7 @@ description: "A ten-part series on the AI-native organisation: workflow, org des
   <p class="m-lede">The layer pages show the pattern. The essays work through the mechanism. New essays arrive here first, then on LinkedIn.</p>
   <div class="m-filter" role="group" aria-label="Filter by layer" data-essay-filter>
     <button type="button" class="m-chip" data-filter="all" aria-pressed="true">All</button>
-    {% for key in ["workflow", "org", "governance", "context"] %}{% set l = layers | byKey(key) %}<button type="button" class="m-chip" data-filter="{{ l.key }}" aria-pressed="false">{{ l.name }}</button>{% endfor %}
+    {% for l in layers %}<button type="button" class="m-chip" data-filter="{{ l.key }}" aria-pressed="false">{{ l.n }} · {{ l.name }}</button>{% endfor %}
   </div>
   <div data-essay-list>{% set list = series %}{% include "partials/essay-list.njk" %}</div>
 </section>

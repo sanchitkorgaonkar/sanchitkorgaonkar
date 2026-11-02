@@ -5,7 +5,7 @@
     <span class="n">{{ e.n | pad2 }}</span>
     <span class="t">
       {% if e.url %}<a href="{{ e.url }}"><b>{{ e.title }}</b></a>{% else %}<b>{{ e.title }}</b>{% endif %}
-      <span>{{ e.excerpt }} · <a href="/{{ l.slug }}/">{{ l.name }}</a></span>
+      <span>{{ e.excerpt }} · <a href="/{{ l.slug }}/">Layer {{ l.n }} · {{ l.name }}</a></span>
     </span>
     <span class="s {{ e.status }}">{{ e.status | statusLabel }}</span>
   </li>
