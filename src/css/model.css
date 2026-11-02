@@ -439,3 +439,6 @@ p{margin:0}
 .m-brand .m-brand-txt span{font-size:12.5px;color:var(--muted)}
 .m-wrap{padding-bottom:28px}
 @media (max-width:640px){ .m-signoff{width:auto;flex:1;min-width:0} }
+.m-about-role{font:inherit;letter-spacing:0;display:flex;flex-direction:column;gap:2px}
+.m-about-role b{font-weight:600;font-size:18px;color:var(--ink)}
+.m-about-role span{font-size:16px;color:var(--muted)}
