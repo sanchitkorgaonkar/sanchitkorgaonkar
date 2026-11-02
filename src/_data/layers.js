@@ -106,8 +106,8 @@ module.exports = [
     description: "The shared context layer underneath workflow, org design and governance, and why naming is the hard part.",
     interactive: "same-thing",
     field: {
-      num: "11",
-      text: "sources behind one scoped service account: tickets, calls, Slack, roadmap, OKRs, Jira, analytics, code, tests, help docs and the CRM. Private channels, HR and finance spaces stay excluded."
+      num: "10",
+      text: "sources behind one scoped service account: tickets, calls, Slack, roadmap, OKRs, Jira, analytics, code repositories, help docs and the CRM. Private channels, HR and finance spaces stay excluded."
     },
     learned: [
       ["The reasoning isn't in any tool", "A feature built in a week through an AI-assisted workflow was caught at the demo by a PM who knew the product's history. The concept it was built on had only ever been an admin's organising tool. We rolled it back. Capturing the why has to be a step inside the work."],

@@ -3,15 +3,70 @@
   "outputDirectory": "_site",
   "installCommand": "npm install",
   "redirects": [
-    { "source": "/prototype/why-i-built-this-site", "destination": "/notes/why-i-built-this-site/", "permanent": true },
-    { "source": "/prototype/why-i-built-this-site/", "destination": "/notes/why-i-built-this-site/", "permanent": true },
-    { "source": "/prototype", "destination": "/essays/#notes", "permanent": true },
-    { "source": "/prototype/", "destination": "/essays/#notes", "permanent": true },
-    { "source": "/notes", "destination": "/essays/#notes", "permanent": true },
-    { "source": "/notes/", "destination": "/essays/#notes", "permanent": true },
-    { "source": "/artifacts", "destination": "/essays/#notes", "permanent": true },
-    { "source": "/artifacts/", "destination": "/essays/#notes", "permanent": true },
-    { "source": "/projects", "destination": "/", "permanent": true },
-    { "source": "/projects/", "destination": "/", "permanent": true }
+    {
+      "source": "/prototype/why-i-built-this-site",
+      "destination": "/notes/why-i-built-this-site/",
+      "permanent": true
+    },
+    {
+      "source": "/prototype/why-i-built-this-site/",
+      "destination": "/notes/why-i-built-this-site/",
+      "permanent": true
+    },
+    {
+      "source": "/prototype",
+      "destination": "/essays/#notes",
+      "permanent": true
+    },
+    {
+      "source": "/prototype/",
+      "destination": "/essays/#notes",
+      "permanent": true
+    },
+    {
+      "source": "/notes",
+      "destination": "/essays/#notes",
+      "permanent": true
+    },
+    {
+      "source": "/notes/",
+      "destination": "/essays/#notes",
+      "permanent": true
+    },
+    {
+      "source": "/artifacts",
+      "destination": "/essays/#notes",
+      "permanent": true
+    },
+    {
+      "source": "/artifacts/",
+      "destination": "/essays/#notes",
+      "permanent": true
+    },
+    {
+      "source": "/projects",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/projects/",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/r/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300"
+        }
+      ]
+    }
   ]
 }
