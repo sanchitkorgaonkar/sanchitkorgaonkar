@@ -16,6 +16,10 @@ video:
       <h1>AI makes people faster. Is it making your organisation faster?</h1>
       <p class="m-lede">AI accelerates individual tasks, but better tools alone don’t make organisations more productive. The gains come from redesigning the system around the tools: what people know, how work moves, how teams are organised and how decisions get made.</p>
       <p class="m-lede">This site is what I’ve learned redesigning all four from the inside.</p>
+      <a class="m-byline" href="/about/">
+        <img src="/assets/sanchit-portrait.jpg" alt="" width="40" height="40">
+        <span><b>Sanchit Korgaonkar</b> · seventeen years making large programs land, at Mastercard and in B2B SaaS · <span class="m-byline-link">About me →</span></span>
+      </a>
     </div>
     <div class="m-iso-wrap">
       <div class="m-iso" aria-hidden="true">
@@ -56,27 +60,10 @@ video:
       <span class="m-insight-ly"><span class="m-num">{{ l.n }}</span>{{ l.name }}</span>
       <h3>{{ l.insight[0] }}</h3>
       <p>{{ l.insight[1] }}</p>
+      <p class="m-sofar"><span>So far</span>{{ l.result[1] }}</p>
       <span class="m-link">Read how it went →</span>
     </a>
     {% endfor %}
-  </div>
-</section>
-
-<section class="m-sec">
-  <h2>What happened</h2>
-  <div class="m-results-wrap">
-    <table class="m-results">
-      <thead><tr><th scope="col">Layer</th><th scope="col">What changed</th><th scope="col">Result so far</th></tr></thead>
-      <tbody>
-        {% for l in layers %}
-        <tr>
-          <th scope="row"><a href="/{{ l.slug }}/"><span class="m-num">{{ l.n }}</span>{{ l.name }}</a></th>
-          <td>{{ l.result[0] }}</td>
-          <td>{{ l.result[1] }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
   </div>
 </section>
 
@@ -104,12 +91,3 @@ video:
   </div>
 </section>
 
-<section class="m-sec">
-  <div class="m-about">
-    <img src="/assets/sanchit-portrait.jpg" alt="Sanchit Korgaonkar" width="120" height="120">
-    <div class="m-about-txt">
-      <p class="m-body">I've spent seventeen years making large programs land, from global payments launches at Mastercard to B2B SaaS. The pattern held everywhere: the constraint was rarely how fast people could build. It was how fast the organisation could decide, align and verify. AI made that gap impossible to ignore, so I started redesigning the layer where it lives.</p>
-      <a class="m-link" href="/about/">More about me →</a>
-    </div>
-  </div>
-</section>

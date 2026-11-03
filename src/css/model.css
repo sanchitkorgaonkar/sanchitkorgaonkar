@@ -539,3 +539,13 @@ p{margin:0}
 .m-next-card .m-eyebrow{display:flex;align-items:center}
 @media (max-width:640px){ .m-chainup li{grid-template-columns:minmax(0,1fr);gap:6px} }
 .m-next.m-next-4{grid-template-columns:repeat(2,minmax(0,1fr))} @media (max-width:640px){.m-next.m-next-4{grid-template-columns:minmax(0,1fr)}}
+
+/* ===== home: byline, so-far line ===== */
+.m-byline{display:flex;align-items:center;gap:12px;text-decoration:none;font-size:14px;color:var(--muted);line-height:1.4;max-width:58ch}
+.m-byline img{width:40px;height:40px;border-radius:50%;object-fit:cover;border:1px solid var(--line);flex:none}
+.m-byline b{color:var(--ink);font-weight:600}
+.m-byline-link{color:var(--accent);white-space:nowrap}
+.m-byline:hover .m-byline-link{text-decoration:underline}
+.m-insight .m-sofar{font-family:var(--f-display);font-size:14px;line-height:1.45;color:var(--ink);border-top:1px dashed var(--line);padding-top:10px;margin-top:auto}
+.m-insight .m-sofar span{display:block;font:500 10.5px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ok);margin-bottom:2px}
+.m-insight .m-sofar + .m-link{margin-top:0}
