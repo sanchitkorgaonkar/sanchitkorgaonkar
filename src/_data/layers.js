@@ -7,6 +7,17 @@
 const layers = [
   {
     key: "governance",
+    insight: ["The first AI-drafted review failed on ownership, not data", "Leadership asked a team about a lowlight, and the team said the AI had written it. The draft wasn't the problem. Nobody stood behind it."],
+    result: ["Agent-drafted monthly health check, owned by each team", "Monthly reviews replace the quarterly deck, with far less prep"],
+    fieldAfter: "hard",
+    case: {
+      "start": "Quarterly review decks took weeks to assemble and were stale by the time they were presented. Teams spent their prep time writing status instead of deciding what to do about it.",
+      "decisions": "Let an agent draft the review from the systems teams already use, and keep the team as the owner: they correct the draft and write the summary. Plan for corrections from day one and feed them into the next cycle. Move from quarterly to monthly.",
+      "redesign": "A monthly health check with highlights, lowlights, metrics and risks drafted from support tickets, customer calls, Slack, retention data, OKRs, analytics, escalations and the roadmap. Piloted on three product streams, then rolled out to every pod.",
+      "hard": "The first review showed that a correct draft isn't enough. A team that hasn't checked and committed to what it presents can't answer questions about it.",
+      "changed": "Every pod now runs the monthly check. Teams spend their time correcting and committing instead of authoring, and the format improves each month.",
+      "learned": "Nobody should present what they don't own. Ownership has to be a step in the process, not an assumption about it."
+    },
     n: 4,
     shift: ["Teams write status reports for reviews", "Agents draft the status; teams correct and own it"],
     slug: "governance",
@@ -37,6 +48,17 @@ const layers = [
   },
   {
     key: "org",
+    insight: ["Every pod going live didn't mean it worked", "Activation tells you the move happened. Whether pods re-prioritise less, ship faster and wait less on specialists is a separate question, and it takes months to answer."],
+    result: ["14 domain teams rebuilt as 30 outcome pods", "All pods live; now measuring speed and focus"],
+    fieldAfter: "redesign",
+    case: {
+      "start": "Teams were organised by function and legacy product line, while the roadmap had moved to AI. Every AI feature crossed product lines, so one initiative needed several hand-offs before a customer saw anything, and tech debt, bugs and customer asks interrupted everyone.",
+      "decisions": "Organise around outcomes, not functions. Give interrupts their own pods (tech debt, production support, customer impact) so outcome pods keep their focus. Have an agent do the first cross-domain pass, with specialists reviewing only for dependencies, and make one system of record non-negotiable.",
+      "redesign": "The team structure itself: pod charters, decision rights, a readiness gate for every pod, a rehearsal workshop for pod leads, a leadership dashboard and a weekly enablement clinic. I ran the transition with no direct reports over the people moving.",
+      "hard": "Engineering adopted the shared system of record faster than Product, and closing that gap became the main work after launch. A pod's plan that lives in threads and decks doesn't exist for anyone else.",
+      "changed": "All pods are live and run a monthly health check. Whether they re-prioritise less, ship faster and wait less on specialists is what we're measuring now.",
+      "learned": "Activation is not success. A pod model works or fails on three things, in this order: a shared system of record, pod leads who have rehearsed before go-live, and a readiness gate leadership can see."
+    },
     n: 3,
     shift: ["Functions own their piece of the work", "Small teams own the outcome end to end"],
     slug: "org-design",
@@ -51,7 +73,7 @@ const layers = [
     interactive: "count-handoffs",
     field: {
       num: "14 → 30",
-      text: "domain teams rebuilt as outcome pods across an R&D organisation. I designed the model and ran the transition with no direct reports over the people moving."
+      text: "domain teams rebuilt as outcome pods across the R&D organisation."
     },
     learned: [
       ["The system of record decides whether pods work", "A pod's plan that lives in threads and decks doesn't exist for anyone else. Engineering adopted the shared system faster than Product, and closing that gap became the main work after launch."],
@@ -67,6 +89,17 @@ const layers = [
   },
   {
     key: "workflow",
+    insight: ["Faster building made the queue longer", "Once agents drafted the work, almost everything in flight was waiting in review, not in development. The bottleneck moved to people deciding it's right."],
+    result: ["AI-assisted customer-fix pipeline with human review gates", "Fixes that never got prioritised now ship routinely"],
+    fieldAfter: "hard",
+    case: {
+      "start": "Small customer fixes kept waiting. Each one cost less than the release process around it, so none ever won a slot against roadmap work, and account teams carried the frustration.",
+      "decisions": "Let agents do the grooming and the first draft of the code. Keep people at the three gates where judgment matters: functional review, technical review and merge. Set decision tiers so the lowest-risk changes need one mandatory human check, and order the work by account health, renewal timing and strategic weight.",
+      "redesign": "The path from request to release: one front door, an in-house grooming agent, agent-raised pull requests, testing and deployment kept in-house, and a release note to customer-facing teams when a fix ships. Sending work back at a gate is part of the design, not a failure.",
+      "hard": "Once building got cheap, review became the queue. And when we automated telling customers a fix had shipped, the ship-status data underneath was wrong in most of the first runs.",
+      "changed": "Fixes that used to wait indefinitely now ship routinely, through a dedicated customer-impact pod. Reviewing related fixes together, grouped by root cause, cut human review passes sharply without adding reviewers. Next year the pipeline becomes the customer-impact arm of a company-wide retention programme.",
+      "learned": "Put human gates where the judgment is, not everywhere. And once fixes stop being scarce, deciding what to fix first becomes the real business decision."
+    },
     n: 2,
     shift: ["Building is the constraint", "Review is the constraint"],
     slug: "workflow",
@@ -81,7 +114,7 @@ const layers = [
     interactive: "move-bottleneck",
     field: {
       num: "24 of 26",
-      text: "active stories in our AI-assisted customer-fix pipeline were waiting in review, not in development. Reviewing related fixes together, grouped by root cause, cut human review passes sharply without adding reviewers."
+      text: "active stories in our AI-assisted customer-fix pipeline were waiting in review, not in development."
     },
     learned: [
       ["Put the human gates where the judgment is", "Not every change needs the same scrutiny. The lowest-risk changes get one mandatory human check; riskier ones get more. Sending work back at a gate is expected, not a failure."],
@@ -98,6 +131,17 @@ const layers = [
   },
   {
     key: "context",
+    insight: ["Connecting the tools was the easy part", "Ten sources plugged in quickly. The hard part was that every function names the same product area differently, so an agent reading all of them sees unrelated things."],
+    result: ["Ten sources behind one shared, scoped layer", "Workflow, pods and reviews all read from the same place; adoption growing"],
+    fieldAfter: "redesign",
+    case: {
+      "start": "Every function had its own tools and its own name for the same product area. The reasoning behind decisions lived in meetings and in people's heads, so every new AI tool started from nothing.",
+      "decisions": "Build one shared layer instead of wiring each tool to each agent. Run it on a single scoped service account, with private channels, HR and finance spaces excluded. Capture meeting decisions automatically into each pod's space, so the why is recorded where the work happens.",
+      "redesign": "It started as my hackathon project and grew into the layer everything else reads: tickets, calls, Slack, roadmap, OKRs, Jira, analytics, code, help docs and the CRM, behind one account that infosec reviews.",
+      "hard": "Getting the agent to read reliably across tools, because each function names the same area differently. Records were easy; the conversations where decisions get made were not. Capture only works when teams follow the structure, and teaching that took longer than building it.",
+      "changed": "The customer-fix pipeline, the pods and the monthly health check now read from the same place. Adoption is growing, and not every team is onboarded yet.",
+      "learned": "Product reasoning isn't in any tool. A feature built in a week was rolled back at the demo, because the concept it rested on had only ever been an admin's organising tool. Capturing the why has to be a step inside the work."
+    },
     n: 1,
     shift: ["Context sits in disconnected tools and people's heads", "Context is connected and captured for people and agents"],
     slug: "context-layer",
@@ -112,7 +156,7 @@ const layers = [
     interactive: "same-thing",
     field: {
       num: "10",
-      text: "sources behind one scoped service account: tickets, calls, Slack, roadmap, OKRs, Jira, analytics, code repositories, help docs and the CRM. Private channels, HR and finance spaces stay excluded."
+      text: "sources behind one scoped service account. Private channels, HR and finance spaces stay excluded."
     },
     learned: [
       ["The reasoning isn't in any tool", "A feature built in a week through an AI-assisted workflow was caught at the demo by a PM who knew the product's history. The concept it was built on had only ever been an admin's organising tool. We rolled it back. Capturing the why has to be a step inside the work."],

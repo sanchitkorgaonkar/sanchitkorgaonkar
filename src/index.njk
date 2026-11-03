@@ -49,14 +49,58 @@ video:
 
 
 <section class="m-sec">
-  <div class="m-headrow"><h2>The essay series</h2><a class="m-link" href="/essays/">All essays and notes →</a></div>
-  {% set list = series %}{% include "partials/essay-list.njk" %}
+  <h2>Four things that surprised me</h2>
+  <div class="m-insights">
+    {% for l in layers %}
+    <a class="m-insight" href="/{{ l.slug }}/">
+      <span class="m-insight-ly"><span class="m-num">{{ l.n }}</span>{{ l.name }}</span>
+      <h3>{{ l.insight[0] }}</h3>
+      <p>{{ l.insight[1] }}</p>
+      <span class="m-link">Read how it went →</span>
+    </a>
+    {% endfor %}
+  </div>
 </section>
 
 <section class="m-sec">
-  <div class="m-band">
-    <div><h3>Where is your organisation's bottleneck?</h3><p class="m-small">Five questions, two minutes, no sign-up.</p></div>
-    <a class="m-btn primary" href="/check/">Take the self-check</a>
+  <h2>What happened</h2>
+  <div class="m-results-wrap">
+    <table class="m-results">
+      <thead><tr><th scope="col">Layer</th><th scope="col">What changed</th><th scope="col">Result so far</th></tr></thead>
+      <tbody>
+        {% for l in layers %}
+        <tr>
+          <th scope="row"><a href="/{{ l.slug }}/"><span class="m-num">{{ l.n }}</span>{{ l.name }}</a></th>
+          <td>{{ l.result[0] }}</td>
+          <td>{{ l.result[1] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="m-sec">
+  <h2>Where next</h2>
+  <div class="m-next">
+    <a class="m-next-card" href="/how-it-works/">
+      <span class="m-eyebrow">Three minutes</span>
+      <h3>See how the four layers work together</h3>
+      <p>Follow one small customer fix through context, workflow, teams and review.</p>
+      <span class="m-link">Follow the fix →</span>
+    </a>
+    <a class="m-next-card" href="/essays/">
+      <span class="m-eyebrow">The essay series</span>
+      <h3>Read the essays</h3>
+      <p>Ten essays on the AI-native organisation, one mechanism at a time. Start with The Layer Underneath.</p>
+      <span class="m-link">All essays →</span>
+    </a>
+    <a class="m-next-card" href="/check/">
+      <span class="m-eyebrow">Two minutes · no sign-up</span>
+      <h3>Take the self-check</h3>
+      <p>Five questions to find which layer is most likely slowing your organisation down.</p>
+      <span class="m-link">Start the check →</span>
+    </a>
   </div>
 </section>
 

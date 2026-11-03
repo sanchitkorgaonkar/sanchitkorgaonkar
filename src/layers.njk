@@ -30,21 +30,41 @@ eleventyComputed:
   </div>
 </section>
 
+{%- set caseSteps = [
+  ["start", "Starting situation"],
+  ["decisions", "Decisions I made"],
+  ["redesign", "What I redesigned"],
+  ["hard", "What was hard"],
+  ["changed", "What changed"],
+  ["learned", "What I learned"]
+] -%}
+<section class="m-sec">
+  <h2>How it went</h2>
+  <ol class="m-case">
+    {% for step in caseSteps %}
+    <li class="m-case-step{% if step[0] == 'learned' %} is-learned{% endif %}">
+      <span class="m-case-k">{{ step[1] }}</span>
+      <div class="m-case-v">
+        <p>{{ layer.case[step[0]] }}</p>
+        {% if layer.fieldAfter == step[0] %}
+        <div class="m-field {% if not layer.field.num %}nonum{% endif %}">
+          <span class="m-eyebrow">From the field</span>
+          {% if layer.field.num %}<b>{{ layer.field.num }}</b>{% endif %}
+          <p>{{ layer.field.text }}</p>
+        </div>
+        {% endif %}
+      </div>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+
 {% include "partials/interactive.njk" %}
 
 <section class="m-sec">
-  <div class="m-field {% if not layer.field.num %}nonum{% endif %}">
-    <span class="m-eyebrow">From the field</span>
-    {% if layer.field.num %}<b>{{ layer.field.num }}</b>{% endif %}
-    <p>{{ layer.field.text }}</p>
-  </div>
-</section>
-
-<section class="m-sec">
-  <h2>What I learned building it</h2>
-  <div class="m-learned">
-    {% for item in layer.learned %}<article><h3>{{ item[0] }}</h3><p>{{ item[1] }}</p></article>{% endfor %}
-  </div>
+  <h2>If you're facing this</h2>
+  <p class="m-small">What I'd look at first in your organisation.</p>
+  <ol class="m-qs">{% for q in layer.questions %}<li>{{ q }}</li>{% endfor %}</ol>
 </section>
 
 <section class="m-sec">
@@ -58,10 +78,7 @@ eleventyComputed:
     </li>
     {% endif %}{% endfor %}
   </ol>
-  <details class="m-details">
-    <summary>What I'd look at first in your organisation</summary>
-    <ol>{% for q in layer.questions %}<li>{{ q }}</li>{% endfor %}</ol>
-  </details>
+  <a class="m-link" href="/how-it-works/">How the four layers work together →</a>
 </section>
 
 <section class="m-sec">
