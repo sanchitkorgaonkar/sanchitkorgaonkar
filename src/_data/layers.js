@@ -99,7 +99,7 @@ const layers = [
   {
     key: "context",
     n: 1,
-    shift: ["Context sits in disconnected tools and people's heads", "Context is connected and captured where people and agents can use it"],
+    shift: ["Context sits in disconnected tools and people's heads", "Context is connected and captured for people and agents"],
     slug: "context-layer",
     name: "Context layer",
     sub: "The foundation",
