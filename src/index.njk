@@ -40,8 +40,9 @@ video:
 <section class="m-sec">
   <h2>What changes when building gets cheap</h2>
   <div class="m-shifts">
+    <div class="m-shift m-shift-head" aria-hidden="true"><span></span><span class="from">Before</span><span></span><span class="to">Now</span></div>
     {% for l in layers %}
-    <a class="m-shift" href="/{{ l.slug }}/"><span class="ly"><span class="m-num">{{ l.n }}</span>{{ l.name }}</span><span class="from">{{ l.shift[0] }}</span><span class="arr" aria-hidden="true">→</span><span class="to">{{ l.shift[1] }}</span></a>
+    <a class="m-shift" href="/{{ l.slug }}/"><span class="ly"><span class="m-num">{{ l.n }}</span>{{ l.name }}</span><span class="from"><span class="lbl">Before: </span>{{ l.shift[0] }}</span><span class="arr" aria-hidden="true">→</span><span class="to"><span class="lbl">Now: </span>{{ l.shift[1] }}</span></a>
     {% endfor %}
   </div>
 </section>

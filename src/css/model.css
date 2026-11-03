@@ -458,3 +458,15 @@ p{margin:0}
 .m-wrap .m-num.m-num{color:var(--paper);font-size:11px;letter-spacing:0}
 .m-closing p.m-or{font-family:var(--f-display);font-size:14px;color:var(--muted)}
 .m-closing .m-or .m-linkbtn{margin-left:6px}
+
+/* ===== shifts: Before / Now columns, no strikethrough ===== */
+.m-shift .from{text-decoration:none;color:var(--muted)}
+.m-shift .to{color:var(--ink)}
+.m-shift-head{padding:0 0 10px}
+.m-shift-head span{font:500 11px var(--f-mono)!important;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)!important;text-decoration:none!important;font-weight:500!important}
+.m-shift .lbl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:640px){
+  .m-shift-head{display:none}
+  .m-shift .lbl{position:static;width:auto;height:auto;overflow:visible;clip:auto;font:500 10.5px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+  .m-shift{gap:6px}
+}
