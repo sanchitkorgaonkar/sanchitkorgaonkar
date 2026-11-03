@@ -8,7 +8,7 @@ const layers = [
   {
     key: "governance",
     n: 4,
-    shift: ["Teams write status for leadership", "Teams correct a draft and own it"],
+    shift: ["Teams write status reports for reviews", "Agents draft the status; teams correct and own it"],
     slug: "governance",
     name: "Governance",
     sub: "How leaders see",
@@ -38,7 +38,7 @@ const layers = [
   {
     key: "org",
     n: 3,
-    shift: ["Functions own their piece of the work", "Small teams own an outcome end to end"],
+    shift: ["Functions own their piece of the work", "Small teams own the outcome end to end"],
     slug: "org-design",
     name: "Org design",
     sub: "How teams are shaped",
@@ -68,7 +68,7 @@ const layers = [
   {
     key: "workflow",
     n: 2,
-    shift: ["Building is the scarce step", "Deciding it's right is the scarce step"],
+    shift: ["Building is the constraint", "Review is the constraint"],
     slug: "workflow",
     name: "Workflow",
     sub: "How work flows",
@@ -99,7 +99,7 @@ const layers = [
   {
     key: "context",
     n: 1,
-    shift: ["Context sits in each team's tools", "Context is assembled where everyone reads it"],
+    shift: ["Context sits in disconnected tools and people's heads", "Context is connected and captured where people and agents can use it"],
     slug: "context-layer",
     name: "Context layer",
     sub: "The foundation",
