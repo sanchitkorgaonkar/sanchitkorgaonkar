@@ -1,0 +1,5 @@
+{# Tab bar shared by /essays/ and /library/. Set `tab` to "essays" or "library". #}
+<nav class="m-tabs" aria-label="Writing">
+  <a href="/essays/" {% if tab == "essays" %}aria-current="page"{% endif %}>Essays <span class="m-tab-count">{{ series.length }}</span></a>
+  <a href="/library/" {% if tab == "library" %}aria-current="page"{% endif %}>Library <span class="m-tab-count">{{ (library | libraryItems(collections.notes)).length }}</span></a>
+</nav>

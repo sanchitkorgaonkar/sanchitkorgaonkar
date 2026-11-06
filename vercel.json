@@ -15,32 +15,32 @@
     },
     {
       "source": "/prototype",
-      "destination": "/essays/#notes",
+      "destination": "/library/",
       "permanent": true
     },
     {
       "source": "/prototype/",
-      "destination": "/essays/#notes",
+      "destination": "/library/",
       "permanent": true
     },
     {
       "source": "/notes",
-      "destination": "/essays/#notes",
+      "destination": "/library/",
       "permanent": true
     },
     {
       "source": "/notes/",
-      "destination": "/essays/#notes",
+      "destination": "/library/",
       "permanent": true
     },
     {
       "source": "/artifacts",
-      "destination": "/essays/#notes",
+      "destination": "/library/",
       "permanent": true
     },
     {
       "source": "/artifacts/",
-      "destination": "/essays/#notes",
+      "destination": "/library/",
       "permanent": true
     },
     {

@@ -569,3 +569,11 @@ p{margin:0}
 .m-lib-take-k b{font-weight:500}
 .m-lib-take-k .st-matches{color:var(--ok)} .m-lib-take-k .st-adds{color:var(--accent)} .m-lib-take-k .st-pushback{color:var(--warn)}
 .m-lib-take p{font-family:var(--f-body);font-size:var(--body-size);line-height:1.55}
+
+/* ===== writing tabs ===== */
+.m-tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:6px}
+.m-tabs a{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;margin-bottom:-1px;text-decoration:none;color:var(--muted);font-weight:600;font-size:15px;border-bottom:2px solid transparent}
+.m-tabs a:hover{color:var(--ink)}
+.m-tabs a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--accent)}
+.m-tab-count{font:500 11px var(--f-mono);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:1px 7px;color:var(--muted)}
+.m-tabs a[aria-current="page"] .m-tab-count{border-color:var(--accent);color:var(--accent)}

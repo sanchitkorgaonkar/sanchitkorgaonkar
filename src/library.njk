@@ -1,0 +1,37 @@
+---
+layout: model.njk
+permalink: /library/
+title: "Library"
+name: "Library"
+description: "What Sanchit Korgaonkar is reading and listening to on AI-native organisations, each tied to a layer and tested against what he has built, plus his own shorter notes."
+---
+<section class="m-sec">
+  {% set tab = "library" %}{% include "partials/writing-tabs.njk" %}
+  <span class="m-eyebrow">Reading, listening and notes</span>
+  <h1>Library</h1>
+  <p class="m-lede">What I'm reading and listening to, tested against what I've built, plus my own shorter notes. Each one is tied to a layer.</p>
+  <div class="m-filter" role="group" aria-label="Filter the library" data-lib-filter>
+    <button type="button" class="m-chip" data-filter="all" aria-pressed="true">All</button>
+    {% for l in layers %}<button type="button" class="m-chip" data-filter="{{ l.key }}" aria-pressed="false">{{ l.n }} · {{ l.name }}</button>{% endfor %}
+    <button type="button" class="m-chip" data-filter="note" aria-pressed="false">My notes</button>
+  </div>
+  <ul class="m-lib" data-lib-list>
+    {% for item in library | libraryItems(collections.notes) %}{% set l = layers | byKey(item.layer) if item.layer else null %}
+    <li class="m-lib-item is-{{ item.kind }}" data-layer="{{ item.layer or '' }}" data-kind="{{ item.kind }}">
+      <div class="m-lib-meta">
+        {% if l %}<a class="m-lib-layer" href="/{{ l.slug }}/"><span class="m-num">{{ l.n }}</span>{{ l.name }}</a>{% endif %}
+        <span class="m-lib-type">{{ item.type }}</span>
+        <span>{{ item.by }}</span>
+        <span>{% if item.kind == "reading" %}{{ item.published | monthYear }}{% else %}{{ item.year }}{% endif %}</span>
+      </div>
+      <h3><a href="{{ item.url }}"{% if item.external %} target="_blank" rel="noopener"{% endif %}>{{ item.title }}{% if item.external %} <span class="m-ext" aria-label="opens the original">↗</span>{% endif %}</a></h3>
+      {% if item.kind == "reading" %}
+      <p class="m-lib-says">{{ item.says }}</p>
+      <div class="m-lib-take"><span class="m-lib-take-k">My take{% if item.stance %} · <b class="st-{{ item.stance }}">{{ item.stance | stanceLabel }}</b>{% endif %}</span><p>{{ item.take }}</p></div>
+      {% else %}
+      <p class="m-lib-says">{{ item.says }}</p>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</section>
