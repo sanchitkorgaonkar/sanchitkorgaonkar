@@ -1,5 +1,6 @@
 ---
 layout: note.njk
+layer: workflow
 title: "How much of your R&D can actually be AI-driven?"
 year: 2026
 type: "Analysis"

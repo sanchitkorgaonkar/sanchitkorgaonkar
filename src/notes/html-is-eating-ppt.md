@@ -1,5 +1,6 @@
 ---
 layout: note.njk
+layer: workflow
 title: "HTML Is Eating PPT"
 year: 2026
 type: "Analysis"

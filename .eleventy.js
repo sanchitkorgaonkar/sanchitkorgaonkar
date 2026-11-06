@@ -18,6 +18,23 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("seriesFor", (series, key) => series.filter(e => e.layer === key));
   eleventyConfig.addFilter("seriesNext", (series, n) => series.find(e => e.n === n + 1) || null);
   eleventyConfig.addFilter("seriesEntry", (series, url) => series.find(e => e.url === url) || null);
+  // Library: reading entries (src/_data/library.js) merged with Sanchit's own notes, newest first
+  eleventyConfig.addFilter("libraryItems", (library, notes) => {
+    const reading = (library || []).map(e => ({
+      kind: "reading", title: e.title, url: e.url, external: true, type: e.type,
+      by: e.author + (e.source && e.source !== e.author ? " · " + e.source : ""),
+      date: new Date(e.added || e.published), published: e.published, layer: e.layer,
+      stance: e.stance, says: e.says, take: e.take
+    }));
+    const mine = (notes || []).map(n => ({
+      kind: "note", title: n.data.title, url: n.url, external: false, type: "My note",
+      by: n.data.type || "", date: n.date, year: n.data.year, layer: n.data.layer || null,
+      says: n.data.excerpt || ""
+    }));
+    return reading.concat(mine).sort((a, b) => b.date - a.date);
+  });
+  eleventyConfig.addFilter("stanceLabel", s => ({ matches: "Matches what I saw", adds: "Adds to it", pushback: "I'd push back" }[s] || ""));
+  eleventyConfig.addFilter("monthYear", d => { if (!d) return ""; const x = new Date(d); return x.toLocaleString("en-GB", { month: "short", year: "numeric", timeZone: "UTC" }); });
   eleventyConfig.addFilter("statusLabel", s => ({ live: "Live", draft: "Drafting", planned: "Planned" }[s] || s));
 
   // Simple date filter

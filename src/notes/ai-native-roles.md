@@ -1,5 +1,6 @@
 ---
 layout: note.njk
+layer: org
 title: "AI-Native Roles"
 year: 2026
 type: "Analysis"

@@ -145,6 +145,17 @@
     }));
   }
 
+  // Library: filter by layer or own notes
+  const lf = $("[data-lib-filter]");
+  if (lf) {
+    const items = $$("[data-lib-list] > li");
+    $$("button", lf).forEach(b => b.addEventListener("click", () => {
+      $$("button", lf).forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+      const f = b.dataset.filter;
+      items.forEach(li => (li.hidden = !(f === "all" || (f === "note" ? li.dataset.kind === "note" : li.dataset.layer === f))));
+    }));
+  }
+
   // Self-check
   const ck = $('[data-interactive="check"]');
   if (ck) {
