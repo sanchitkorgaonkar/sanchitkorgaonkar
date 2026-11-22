@@ -1,10 +1,12 @@
 /* Operating-model design system.
    Type: the "Systems" pairing, one engineered family (IBM Plex Sans, Serif, Mono).
    To switch, change the three --f-* tokens and the Google Fonts link in model.njk. */
+/* Palette: warm "graph paper" (cream canvas, faint grid, ink, electric-blue accent). */
 :root{
-  --paper:#ECEFF2; --panel:#F9FAFB; --ink:#141B24; --muted:#56616D; --line:#C7CED5;
-  --accent:#2C47D4; --accent-soft:#DDE3FA; --ok:#1C7A4E; --warn:#9E5B0C;
-  --plane:rgba(249,250,251,.86);
+  --paper:#FFFCF0; --panel:#FFFEF8; --ink:#0D0D0D; --muted:#5F5B4E; --line:#E3DDC8;
+  --accent:#076FE8; --accent-strong:#0559BD; --accent-soft:#E1ECFC; --ok:#1C7A4E; --warn:#A3560B;
+  --plane:rgba(255,254,248,.9);
+  --grid-minor:rgba(110,116,70,.085); --grid-major:rgba(110,116,70,.16);
   --f-display:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
   --f-body:"IBM Plex Serif",Georgia,"Times New Roman",serif;
   --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
@@ -12,12 +14,16 @@
   color-scheme:light;
 }
 @media (prefers-color-scheme: dark){:root{
-  --paper:#0E1319; --panel:#151C24; --ink:#E3E8ED; --muted:#909CA8; --line:#2B3541;
-  --accent:#8FA3FF; --accent-soft:#1E2747; --ok:#5DC594; --warn:#E2A65A; --plane:rgba(21,28,36,.88); color-scheme:dark}}
+  --paper:#15140F; --panel:#1D1C16; --ink:#F3F0E4; --muted:#A6A291; --line:#34322A;
+  --accent:#5A9CFF; --accent-strong:#7DB1FF; --accent-soft:#132748; --ok:#5DC594; --warn:#E2A65A; --plane:rgba(29,28,22,.9);
+  --grid-minor:rgba(255,248,220,.035); --grid-major:rgba(255,248,220,.07); color-scheme:dark}}
 
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-font-smoothing:antialiased}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-display);font-size:15px;line-height:1.5}
+body{margin:0;background-color:var(--paper);
+  background-image:linear-gradient(var(--grid-major) 1px,transparent 1px),linear-gradient(90deg,var(--grid-major) 1px,transparent 1px),
+    linear-gradient(var(--grid-minor) 1px,transparent 1px),linear-gradient(90deg,var(--grid-minor) 1px,transparent 1px);
+  background-size:120px 120px,120px 120px,24px 24px,24px 24px;background-position:-1px -1px;color:var(--ink);font-family:var(--f-display);font-size:15px;line-height:1.5}
 a{color:inherit}
 img{max-width:100%}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
@@ -35,7 +41,7 @@ p{margin:0}
 .m-illus{font:500 11px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--warn)}
 
 /* top bar */
-.m-top{position:sticky;top:0;z-index:9;background:var(--paper);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.m-top{position:sticky;top:0;z-index:9;background:color-mix(in srgb,var(--paper) 86%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
 .m-top-in{display:flex;align-items:center;gap:12px 20px;flex-wrap:wrap;max-width:1080px;margin:0 auto;padding-block:12px;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .m-brand{display:flex;flex-direction:column;text-decoration:none;margin-right:auto}
@@ -50,8 +56,10 @@ p{margin:0}
 .m-sec{display:flex;flex-direction:column;gap:18px;padding-block:36px;border-top:1px solid var(--line)}
 .m-sec:first-child{border-top:0;padding-top:0}
 
-.m-btn{font:600 14px var(--f-display);padding:10px 16px;border-radius:3px;border:1px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;text-decoration:none;display:inline-block}
-.m-btn.primary{background:var(--ink);color:var(--paper)}
+.m-btn{font:600 14px var(--f-display);padding:10px 20px;border-radius:999px;border:1px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;text-decoration:none;display:inline-block;transition:background-color .15s,color .15s,border-color .15s,transform .15s}
+.m-btn:hover{background:var(--ink);color:var(--paper)}
+.m-btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.25) inset,0 6px 16px -6px color-mix(in srgb,var(--accent) 70%,transparent)}
+.m-btn.primary:hover{background:var(--accent-strong);border-color:var(--accent-strong);color:#fff;transform:translateY(-1px)}
 
 /* visual grammar */
 .g-ai{background:repeating-linear-gradient(45deg,var(--ink) 0 1.4px,transparent 1.4px 5px);border:1.4px solid var(--ink)}
@@ -297,7 +305,7 @@ p{margin:0}
 .m-problem:hover{border-color:var(--ink)}
 .m-problem q{font-family:var(--f-body);font-size:19px;line-height:1.35}
 .m-problem .go{font:500 12px var(--f-mono);color:var(--accent);white-space:nowrap}
-.m-hint{position:absolute;top:-9px;left:16px;font:500 10.5px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;background:var(--accent);color:var(--paper);padding:2px 7px;border-radius:2px}
+.m-hint{position:absolute;top:-9px;left:16px;font:500 10.5px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;background:var(--accent);color:#fff;padding:2px 7px;border-radius:2px}
 
 /* ===== self-check ===== */
 .m-check{display:flex;flex-direction:column;gap:14px;max-width:760px}
@@ -406,7 +414,7 @@ p{margin:0}
 .m-brand-txt span{font-size:12.5px;color:var(--muted)}
 .m-mark{flex:none;display:block;color:var(--ink)}
 .m-top-cta{padding:7px 12px;font-size:13.5px}
-.m-top-cta:hover{background:var(--ink);color:var(--paper)}
+.m-top-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
 
 /* ===== closing block ===== */
 .m-closing{display:flex;flex-direction:column;gap:14px;max-width:760px;padding:28px;border:1px solid var(--ink);border-radius:4px}
@@ -577,3 +585,7 @@ p{margin:0}
 .m-tabs a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--accent)}
 .m-tab-count{font:500 11px var(--f-mono);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:1px 7px;color:var(--muted)}
 .m-tabs a[aria-current="page"] .m-tab-count{border-color:var(--accent);color:var(--accent)}
+
+/* ===== graph-paper theme: solid surfaces so text never sits on grid lines ===== */
+.m-closing,.m-contact,.m-band,.m-video.placeholder{background-color:var(--panel)}
+.m-video.placeholder{background-image:linear-gradient(135deg,var(--panel),var(--accent-soft))}

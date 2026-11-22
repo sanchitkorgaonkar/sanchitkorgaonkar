@@ -9,6 +9,8 @@
   <title>{{ pageTitle }}</title>
   <meta name="description" content="{{ pageDesc }}">
   {% if noindex %}<meta name="robots" content="noindex">{% endif %}
+  <meta name="theme-color" content="#FFFCF0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#15140F" media="(prefers-color-scheme: dark)">
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
 
   <meta property="og:type" content="{{ 'article' if layout == 'essay.njk' else 'website' }}">
