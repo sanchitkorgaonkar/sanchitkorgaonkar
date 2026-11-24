@@ -2,9 +2,9 @@
 layout: model.njk
 isHome: true
 title: "AI makes people faster. Is it making your organisation faster?"
-description: "The context work depends on, how work flows, how teams are shaped and how leaders see: four layers of an AI-native organisation, from someone redesigning them from the inside."
+description: "What everyone knows, how work moves, how teams are shaped and how progress is reviewed: the four layers of an AI-native organisation, from someone redesigning them from the inside."
 video:
-  title: "The model in two minutes"
+  title: "The four layers in two minutes"
   length: "2:00"
   youtube: null
 ---
@@ -14,7 +14,7 @@ video:
     <div class="m-hero-copy">
       <span class="m-eyebrow">Field notes from inside an AI transformation</span>
       <h1>AI makes people faster. Is it making your organisation faster?</h1>
-      <p class="m-lede">AI accelerates individual tasks, but better tools alone don’t make organisations more productive. The gains come from redesigning the system around the tools: what people know, how work moves, how teams are organised and how decisions get made.</p>
+      <p class="m-lede">AI makes each task faster. That alone doesn’t make the organisation faster. The gain comes from redesigning four layers around the tools: what everyone knows, how work moves, how teams are shaped and how progress is reviewed.</p>
       <p class="m-lede">This site is what I’ve learned redesigning all four from the inside.</p>
     </div>
     <div class="m-iso-wrap">
@@ -24,9 +24,12 @@ video:
         <div class="m-plane p-org" style="--i:2" data-layer="org" data-href="/org-design/"><div class="grid">{% for n in range(9) %}<i></i>{% endfor %}</div></div>
         <div class="m-plane p-gov" style="--i:3" data-layer="governance" data-href="/governance/"><div class="bars"><i class="ai" style="width:88%"></i><i style="width:62%"></i><i class="ai" style="width:74%"></i><i style="width:46%"></i><i class="ai" style="width:80%"></i></div></div>
       </div>
-      <ul class="m-iso-labels">
-        {% for l in layers | reverse %}<li><a href="/{{ l.slug }}/" data-layer="{{ l.key }}"><b><span class="m-num">{{ l.n }}</span>{{ l.name }}</b><span>{{ l.sub }}</span></a></li>{% endfor %}
+      <div class="m-iso-pick">
+      <p class="m-iso-hint" id="iso-hint">Pick a layer to explore</p>
+      <ul class="m-iso-labels" aria-labelledby="iso-hint">
+        {% for l in layers | reverse %}<li><a href="/{{ l.slug }}/" data-layer="{{ l.key }}"><span class="m-iso-txt"><b><span class="m-num">{{ l.n }}</span>{{ l.name }}</b><span>{{ l.sub }}</span></span><span class="m-iso-go" aria-hidden="true">→</span></a></li>{% endfor %}
       </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -57,7 +60,7 @@ video:
       <h3>{{ l.insight[0] }}</h3>
       <p>{{ l.insight[1] }}</p>
       <p class="m-sofar"><span>So far</span>{{ l.result[1] }}</p>
-      <span class="m-link">Read how it went →</span>
+      <span class="m-link">See how it went →</span>
     </a>
     {% endfor %}
   </div>
@@ -65,25 +68,30 @@ video:
 
 <section class="m-sec">
   <h2>Keep exploring</h2>
-  <div class="m-next">
+  <div class="m-next m-next-explore">
     <a class="m-next-card" href="/how-it-works/">
       <span class="m-eyebrow">Three minutes</span>
-      <h3>See how the four layers work together</h3>
-      <p>Follow one small customer fix through context, workflow, teams and review.</p>
+      <h3>See the four layers work together</h3>
+      <p>Follow one customer fix through all four layers.</p>
       <span class="m-link">Follow the fix →</span>
     </a>
     <a class="m-next-card" href="/essays/">
-      <span class="m-eyebrow">The essay series</span>
+      <span class="m-eyebrow">Ten essays</span>
       <h3>Read the essays</h3>
-      <p>Ten essays on the AI-native organisation, one mechanism at a time. Start with The Layer Underneath.</p>
+      <p>The AI-native organisation, one idea at a time. Start with The Layer Underneath.</p>
       <span class="m-link">All essays →</span>
+    </a>
+    <a class="m-next-card" href="/library/">
+      <span class="m-eyebrow">Reading and notes</span>
+      <h3>Browse the library</h3>
+      <p>What I’m reading and listening to, tested against what I’ve built.</p>
+      <span class="m-link">Open the library →</span>
     </a>
     <a class="m-next-card" href="/check/">
       <span class="m-eyebrow">Two minutes · no sign-up</span>
-      <h3>Take the self-check</h3>
-      <p>Five questions to find which layer is most likely slowing your organisation down.</p>
-      <span class="m-link">Start the check →</span>
+      <h3>Take the diagnostic</h3>
+      <p>Five questions to find which layer is slowing your organisation down.</p>
+      <span class="m-link">Start the diagnostic →</span>
     </a>
   </div>
 </section>
-

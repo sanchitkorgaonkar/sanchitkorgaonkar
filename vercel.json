@@ -52,6 +52,26 @@
       "source": "/projects/",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/diagnostic",
+      "destination": "/check/",
+      "permanent": false
+    },
+    {
+      "source": "/diagnostic/",
+      "destination": "/check/",
+      "permanent": false
+    },
+    {
+      "source": "/thinking",
+      "destination": "/essays/",
+      "permanent": false
+    },
+    {
+      "source": "/thinking/",
+      "destination": "/essays/",
+      "permanent": false
     }
   ],
   "headers": [

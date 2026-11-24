@@ -1,12 +1,11 @@
 /* Operating-model design system.
    Type: the "Systems" pairing, one engineered family (IBM Plex Sans, Serif, Mono).
    To switch, change the three --f-* tokens and the Google Fonts link in model.njk. */
-/* Palette: warm "graph paper" (cream canvas, faint grid, ink, electric-blue accent). */
+/* Palette: warm cream canvas, near-black ink, electric-blue accent. */
 :root{
   --paper:#FFFCF0; --panel:#FFFEF8; --ink:#0D0D0D; --muted:#5F5B4E; --line:#E3DDC8;
   --accent:#076FE8; --accent-strong:#0559BD; --accent-soft:#E1ECFC; --ok:#1C7A4E; --warn:#A3560B;
   --plane:rgba(255,254,248,.9);
-  --grid-minor:rgba(110,116,70,.085); --grid-major:rgba(110,116,70,.16);
   --f-display:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
   --f-body:"IBM Plex Serif",Georgia,"Times New Roman",serif;
   --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
@@ -15,15 +14,11 @@
 }
 @media (prefers-color-scheme: dark){:root{
   --paper:#15140F; --panel:#1D1C16; --ink:#F3F0E4; --muted:#A6A291; --line:#34322A;
-  --accent:#5A9CFF; --accent-strong:#7DB1FF; --accent-soft:#132748; --ok:#5DC594; --warn:#E2A65A; --plane:rgba(29,28,22,.9);
-  --grid-minor:rgba(255,248,220,.035); --grid-major:rgba(255,248,220,.07); color-scheme:dark}}
+  --accent:#5A9CFF; --accent-strong:#7DB1FF; --accent-soft:#132748; --ok:#5DC594; --warn:#E2A65A; --plane:rgba(29,28,22,.9); color-scheme:dark}}
 
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-font-smoothing:antialiased}
-body{margin:0;background-color:var(--paper);
-  background-image:linear-gradient(var(--grid-major) 1px,transparent 1px),linear-gradient(90deg,var(--grid-major) 1px,transparent 1px),
-    linear-gradient(var(--grid-minor) 1px,transparent 1px),linear-gradient(90deg,var(--grid-minor) 1px,transparent 1px);
-  background-size:120px 120px,120px 120px,24px 24px,24px 24px;background-position:-1px -1px;color:var(--ink);font-family:var(--f-display);font-size:15px;line-height:1.5}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-display);font-size:15px;line-height:1.5}
 a{color:inherit}
 img{max-width:100%}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
@@ -586,6 +581,44 @@ p{margin:0}
 .m-tab-count{font:500 11px var(--f-mono);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:1px 7px;color:var(--muted)}
 .m-tabs a[aria-current="page"] .m-tab-count{border-color:var(--accent);color:var(--accent)}
 
-/* ===== graph-paper theme: solid surfaces so text never sits on grid lines ===== */
-.m-closing,.m-contact,.m-band,.m-video.placeholder{background-color:var(--panel)}
+/* ===== cream theme: raised surfaces ===== */
+.m-contact,.m-band,.m-video.placeholder{background-color:var(--panel)}
 .m-video.placeholder{background-image:linear-gradient(135deg,var(--panel),var(--accent-soft))}
+
+/* ===== home: layer picker reads as four buttons ===== */
+.m-iso-wrap{grid-template-columns:minmax(0,1fr) 220px}
+.m-iso-pick{display:flex;flex-direction:column;gap:10px}
+.m-iso-hint{font:500 11.5px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.m-iso-labels{gap:8px}
+.m-iso-labels a{flex-direction:row;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--panel);
+  box-shadow:0 1px 0 rgba(0,0,0,.03);transition:border-color .15s,transform .15s,box-shadow .15s}
+.m-iso-txt{display:flex;flex-direction:column;min-width:0}
+.m-iso-txt b{display:flex;align-items:center}
+.m-iso-go{font-size:16px;color:var(--accent);transition:transform .15s}
+.m-iso-labels a.hot,.m-iso-labels a:hover{border-color:var(--accent);box-shadow:0 4px 14px -8px var(--accent);transform:translateX(-2px)}
+.m-iso-labels a.hot .m-iso-go,.m-iso-labels a:hover .m-iso-go{transform:translateX(3px)}
+@media (max-width:640px){
+  .m-iso-wrap{grid-template-columns:minmax(0,1fr)}
+  .m-iso-labels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .m-iso-labels a{padding:10px}
+}
+
+/* ===== keep exploring: four cards ===== */
+.m-next.m-next-explore{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:1000px){ .m-next.m-next-explore{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:640px){ .m-next.m-next-explore{grid-template-columns:minmax(0,1fr)} }
+
+/* ===== closing: full width band ===== */
+.m-closing{max-width:none;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 48px;align-items:center;padding:36px 40px;
+  background:var(--ink);color:var(--paper);border-color:var(--ink);border-radius:16px}
+.m-closing-txt,.m-closing-act{display:flex;flex-direction:column;gap:12px;min-width:0}
+.m-closing .m-btn{border-color:var(--paper);color:var(--paper)}
+.m-closing .m-btn:hover{background:var(--paper);color:var(--ink)}
+.m-closing .m-btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.m-closing .m-btn.primary:hover{background:var(--accent-strong);border-color:var(--accent-strong)}
+.m-closing p.m-or{color:color-mix(in srgb,var(--paper) 70%,var(--ink))}
+.m-closing .m-or code{color:var(--paper)}
+.m-closing .m-linkbtn{color:color-mix(in srgb,var(--accent) 55%,#fff)}
+@media (max-width:760px){ .m-closing{grid-template-columns:minmax(0,1fr);padding:24px} }
+.m-iso-labels .m-iso-txt b{color:var(--ink)}
+.m-closing .m-linkbtn{color:inherit;text-decoration:underline;text-underline-offset:3px}

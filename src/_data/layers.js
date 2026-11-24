@@ -1,33 +1,39 @@
 // The four layers of the operating model, numbered from the foundation up:
 // 1 Context layer · 2 Workflow · 3 Org design · 4 Governance. Exported in number order.
-// One vocabulary everywhere: 1 Context layer · 2 Workflow · 3 Org design · 4 Governance.
+// One vocabulary everywhere. Use these words and no synonyms:
+//   Layers: 1 Context layer (What everyone knows) · 2 Workflow (How work moves)
+//           3 Org design (How teams are shaped) · 4 Governance (How progress is reviewed)
+//   agent = the AI doing the work · building = making the thing · review = a person checking it
+//   gate = a point where a person reviews · pod = a small team that owns an outcome end to end
+//   customer fix (not papercut) · monthly health check (not monthly review/report) · quarterly review deck
+//   own / owns (not "stand behind") · organisation (British spelling) · Diagnostic (not self-check)
 // Rule: at most one number per layer, in `field`.
 // To add a video, set `video.youtube` to the YouTube video ID.
 
 const layers = [
   {
     key: "governance",
-    insight: ["The first AI-drafted review failed on ownership, not data", "Leadership asked a team about a lowlight, and the team said the AI had written it. The draft wasn't the problem. Nobody stood behind it."],
-    result: ["Agent-drafted monthly health check, owned by each team", "Monthly reviews replace the quarterly deck, with far less prep"],
+    insight: ["The first agent-drafted health check failed on ownership, not data", "Leadership asked a team about a lowlight, and the team said the AI had written it. The draft wasn't the problem. Nobody owned it."],
+    result: ["Agent-drafted monthly health check, owned by each team", "A monthly health check replaced the quarterly review deck, with far less prep"],
     fieldAfter: "hard",
     case: {
       "start": "Quarterly review decks took weeks to assemble and were stale by the time they were presented. Teams spent their prep time writing status instead of deciding what to do about it.",
       "decisions": "Let an agent draft the review from the systems teams already use, and keep the team as the owner: they correct the draft and write the summary. Plan for corrections from day one and feed them into the next cycle. Move from quarterly to monthly.",
       "redesign": "A monthly health check with highlights, lowlights, metrics and risks drafted from support tickets, customer calls, Slack, retention data, OKRs, analytics, escalations and the roadmap. Piloted on three product streams, then rolled out to every pod.",
       "hard": "The first review showed that a correct draft isn't enough. A team that hasn't checked and committed to what it presents can't answer questions about it.",
-      "changed": "Every pod now runs the monthly check. Teams spend their time correcting and committing instead of authoring, and the format improves each month.",
+      "changed": "Every pod now runs the monthly health check. Teams spend their time correcting and committing instead of authoring, and the format improves each month.",
       "learned": "Nobody should present what they don't own. Ownership has to be a step in the process, not an assumption about it."
     },
     n: 4,
-    shift: ["Teams write status reports for reviews", "Agents draft the status; teams correct and own it"],
+    shift: ["Teams write status reports by hand", "An agent drafts the status; the team corrects and owns it"],
     slug: "governance",
     name: "Governance",
-    sub: "How leaders see",
+    sub: "How progress is reviewed",
     glyph: "human",
     status: { tone: "ok", label: "Running · every pod, monthly" },
     problem: "I don't trust what status reports tell me.",
     title: "Status shouldn't be written. It should be corrected and owned.",
-    lede: "The quarterly review deck takes weeks to assemble and is stale when it's presented. An agent can draft most of it from tickets, calls, Slack, retention data and the roadmap. The team's job shifts from writing status to correcting it and standing behind it.",
+    lede: "The quarterly review deck takes weeks to assemble and is stale when it's presented. An agent can draft most of it from tickets, calls, Slack, retention data and the roadmap. The team's job shifts from writing status to correcting it and owning it.",
     description: "How an agent-drafted, team-owned monthly health check replaces the quarterly review deck.",
     interactive: "own-the-draft",
     field: {
@@ -41,7 +47,7 @@ const layers = [
     questions: [
       "How long does the quarterly review take to prepare, and who acts on it?",
       "When a lowlight appears, can the team explain what's behind it?",
-      "Are corrections to automated summaries fed back, or lost each cycle?",
+      "Are corrections to agent-drafted summaries fed back, or lost each cycle?",
       "Does your review end in decisions, or in a list of updates?"
     ],
     video: { title: "Governance in 90 seconds", length: "1:30", youtube: null }
@@ -60,15 +66,15 @@ const layers = [
       "learned": "Activation is not success. A pod model works or fails on three things, in this order: a shared system of record, pod leads who have rehearsed before go-live, and a readiness gate leadership can see."
     },
     n: 3,
-    shift: ["Functions own their piece of the work", "Small teams own the outcome end to end"],
+    shift: ["Each function owns its piece of the work", "Small pods own an outcome end to end"],
     slug: "org-design",
     name: "Org design",
     sub: "How teams are shaped",
     glyph: "human",
     status: { tone: "ok", label: "Running · measuring" },
     problem: "Work keeps waiting between teams.",
-    title: "AI in a function gives faster artifacts. AI in a team gives faster outcomes.",
-    lede: "Give every function its own AI tools and each produces more, faster, in its own system. The work still crosses the same hand-offs. The bigger gain is small teams that own an outcome end to end, with an agent doing the first pass across domains.",
+    title: "AI in each function gives faster output. AI in a pod gives faster outcomes.",
+    lede: "Give every function its own AI tools and each produces more, faster, in its own system. The work still crosses the same hand-offs. The bigger gain is pods: small teams that own an outcome end to end, with an agent doing the first pass across domains.",
     description: "Why outcome pods with an agent's first pass beat AI tools bolted onto each function.",
     interactive: "count-handoffs",
     field: {
@@ -90,7 +96,7 @@ const layers = [
   {
     key: "workflow",
     insight: ["Faster building made the queue longer", "Once agents drafted the work, almost everything in flight was waiting in review, not in development. The bottleneck moved to people deciding it's right."],
-    result: ["AI-assisted customer-fix pipeline with human review gates", "Fixes that never got prioritised now ship routinely"],
+    result: ["Customer-fix pipeline where agents build and people review", "Fixes that never got prioritised now ship routinely"],
     fieldAfter: "hard",
     case: {
       "start": "Small customer fixes kept waiting. Each one cost less than the release process around it, so none ever won a slot against roadmap work, and account teams carried the frustration.",
@@ -104,7 +110,7 @@ const layers = [
     shift: ["Building is the constraint", "Review is the constraint"],
     slug: "workflow",
     name: "Workflow",
-    sub: "How work flows",
+    sub: "How work moves",
     glyph: "ai",
     status: { tone: "ok", label: "Running · scaling" },
     problem: "My teams are faster, but we don't ship more.",
@@ -114,7 +120,7 @@ const layers = [
     interactive: "move-bottleneck",
     field: {
       num: "24 of 26",
-      text: "active stories in our AI-assisted customer-fix pipeline were waiting in review, not in development."
+      text: "active stories in our customer-fix pipeline were waiting in review, not in development."
     },
     learned: [
       ["Put the human gates where the judgment is", "Not every change needs the same scrutiny. The lowest-risk changes get one mandatory human check; riskier ones get more. Sending work back at a gate is expected, not a failure."],
@@ -132,7 +138,7 @@ const layers = [
   {
     key: "context",
     insight: ["Connecting the tools was the easy part", "Ten sources plugged in quickly. The hard part was that every function names the same product area differently, so an agent reading all of them sees unrelated things."],
-    result: ["Ten sources behind one shared, scoped layer", "Workflow, pods and reviews all read from the same place; adoption growing"],
+    result: ["Ten sources behind one shared, scoped layer", "The customer-fix pipeline, pods and health check all read from it; adoption growing"],
     fieldAfter: "redesign",
     case: {
       "start": "Every function had its own tools and its own name for the same product area. The reasoning behind decisions lived in meetings and in people's heads, so every new AI tool started from nothing.",
@@ -143,15 +149,15 @@ const layers = [
       "learned": "Product reasoning isn't in any tool. A feature built in a week was rolled back at the demo, because the concept it rested on had only ever been an admin's organising tool. Capturing the why has to be a step inside the work."
     },
     n: 1,
-    shift: ["Context sits in disconnected tools and people's heads", "Context is connected and captured for people and agents"],
+    shift: ["Context sits in disconnected tools and people's heads", "One shared context layer for people and agents"],
     slug: "context-layer",
     name: "Context layer",
-    sub: "The foundation",
+    sub: "What everyone knows",
     glyph: "sys",
     status: { tone: "warn", label: "Built · adoption growing" },
     problem: "We have AI tools everywhere, and nothing connects them.",
     title: "The hard part isn't connecting tools. It's that every function names things differently.",
-    lede: "Most AI budgets go to tools that make one function faster. Almost nothing goes to the layer that assembles what they produce. Workflow, org design and governance all read from the same place.",
+    lede: "Most AI budgets go to tools that make one function faster. Almost nothing goes to the shared layer that connects them. The other three layers all read from it.",
     description: "The shared context layer underneath workflow, org design and governance, and why naming is the hard part.",
     interactive: "same-thing",
     field: {
