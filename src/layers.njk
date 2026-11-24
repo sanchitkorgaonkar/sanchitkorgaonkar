@@ -84,7 +84,7 @@ eleventyComputed:
 <section class="m-sec">
   <div class="m-pager">
     {% if up %}<a href="/{{ up.slug }}/"><span class="m-eyebrow">← Previous layer</span><b><span class="m-num">{{ up.n }}</span>{{ up.name }}</b></a>
-    {% else %}<a href="/"><span class="m-eyebrow">← Start</span><b>The four layers</b></a>{% endif %}
+    {% else %}<a href="/"><span class="m-eyebrow">← Start</span><b>The whole model</b></a>{% endif %}
     {% if down %}<a class="next" href="/{{ down.slug }}/"><span class="m-eyebrow">Next layer →</span><b><span class="m-num">{{ down.n }}</span>{{ down.name }}</b></a>
     {% else %}<a class="next" href="/essays/"><span class="m-eyebrow">Read the series →</span><b>Essays</b></a>{% endif %}
   </div>

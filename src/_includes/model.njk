@@ -36,7 +36,7 @@
 </head>
 <body>
   {%- set navLinks = [
-    ["/", "Four layers", isHome or layerPage],
+    ["/", "The model", isHome or layerPage],
     ["/essays/", "Thinking", page.url.startsWith('/essays') or page.url.startsWith('/notes') or page.url.startsWith('/library')],
     ["/check/", "Diagnostic", page.url.startsWith('/check')],
     ["/about/", "About", page.url.startsWith('/about')]
